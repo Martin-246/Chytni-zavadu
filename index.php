@@ -18,6 +18,14 @@ form {text-align: center;}
         <button>Regristrácia</button>
     </form>
 
+    <br>
+
+    <form action="present_layer/all_tickets.php" class="inline">
+        <button>Vsetky tikety</button>
+    </form>
+
+    <br>
+
 
 </html>
 
