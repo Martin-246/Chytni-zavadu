@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 include_once('../bussiness_layer/print_categories.php');
 
@@ -12,7 +12,6 @@ include_once('../bussiness_layer/print_categories.php');
         <link rel="stylesheet" type="text/css" href="./new_ticket.css" />
         <script type="module" src="./new_ticket.js"></script>
         <style>
-            
         </style>
     </head>
     <body>
@@ -23,7 +22,6 @@ include_once('../bussiness_layer/print_categories.php');
         </nav>
         <h3>Vyber pozíciu na mape<h3>
         <div id="map"></div><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJVGL83AulBYsKWzBA0ooSruG4_CVIWqA&callback=initMap"defer></script>
-        
         <form id="form" method="post" action="../bussiness_layer/create_ticket.php" enctype="multipart/form-data">
         <br><label for="category">Pozicia</label><br>
         <input type="text" id="lng" name="lng">
@@ -32,8 +30,6 @@ include_once('../bussiness_layer/print_categories.php');
         <select name="category">  <?php print_categories(); ?> </select><br>
         <br><label for="fileToUpload">Nahraj fotku (volitelne)</label><br>
         <input type="file" id="fileToUpload" name="fileToUpload"><br>
-        
-        
         <br><input type = "submit" value="Odoslat"><br>
         </div>
     </body>

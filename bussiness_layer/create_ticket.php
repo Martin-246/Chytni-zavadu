@@ -48,14 +48,14 @@ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg
 // Check if $uploadOk is set to 0 by an error
 if ($uploadOk == 0) {
     echo "Sorry, your file was not uploaded. Redirecting to main page...";
-    header("refresh:5;redirect.php"); 
+    header("refresh:5;redirect.php");
 // if everything is ok, try to upload file
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     chmod($target_file, 0755);
     echo "The new tiket with file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
     upload_new_ticket($_POST["category"],$_POST["lng"],$_POST["lat"],$target_file);
-    header("refresh:5;redirect.php"); 
+    header("refresh:5;redirect.php");
   } else {
     echo "Sorry, there was an error uploading your file.";
     header("refresh:5;redirect.php");
