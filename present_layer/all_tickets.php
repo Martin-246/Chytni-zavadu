@@ -44,7 +44,10 @@ td {border-bottom: 1px solid #000000;}
                 <th>Cas modifikacie</th>
                 <th>Fotka problemu</th>
             </tr>
-            <?php print_all_tickets_table_row();?>
+            <div id="tickets">
+                <?php print_all_tickets_table_row();?>    
+            </div>
+            
         </table>
         <script>
             setTimeout(function(){location = ''},5000)

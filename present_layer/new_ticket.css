@@ -20,6 +20,6 @@ nav{
     flex-direction:column;
 }
 h2 > a {padding: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;}
-li > a:hover {background-color: #848482;color: #FFFFFFFF}
+h2 > a:hover {background-color: #848482;color: #FFFFFFFF}
 
 #map {height: 400px; width: 100%;}
