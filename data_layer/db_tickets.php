@@ -29,4 +29,9 @@ function get_my_tickets($id){
     $db = get_pdo();
     return $db->query("SELECT * FROM TICKET WHERE submitted_by=".$id.";");
 }
+
+function remove_ticket($id){
+    $db = get_pdo();
+    $db->query("DELETE FROM TICKET WHERE id='".$id."';");
+}
 ?>
