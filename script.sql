@@ -23,6 +23,8 @@ CREATE TABLE TICKET (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
   category INTEGER NOT NULL,
   foreign key (category) references CATEGORY(id),
+  submitted_by INTEGER NOT NULL,
+  foreign key (submitted_by) references PERSON(id),
   photo varchar(255),
   lng float(10,6) NOT NULL, 
   lat float(10,6) NOT NULL,
