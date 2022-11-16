@@ -44,3 +44,11 @@ CREATE TABLE SERVICE_REQUEST(
   comment_from_technic varchar(255),
   price float(10,2)
 );
+
+INSERT INTO CATEGORY (description) VALUES (Nefunkčná lampa);
+INSERT INTO CATEGORY (description) VALUES (Odpadky);
+INSERT INTO CATEGORY (description) VALUES (Poškodený chodník);
+INSERT INTO CATEGORY (description) VALUES (Poškodená cesta);
+INSERT INTO CATEGORY (description) VALUES (Problém s vozovkou);
+INSERT INTO CATEGORY (description) VALUES (Spadnutý strom);
+INSERT INTO CATEGORY (description) VALUES (Iné);
