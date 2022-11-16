@@ -30,6 +30,10 @@
 	<link rel="stylesheet" type="text/css" href="./register.css"/>
 </head>
 
+	<nav>
+        <h3 class="back"><a href = "../index.php">Späť</a></h2>
+    </nav> 
+
 	<h2>Registrácia</h2>
 
 	<form action='<? $_SERVER['PHP_SELF']?>' method='post'>

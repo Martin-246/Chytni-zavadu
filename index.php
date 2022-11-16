@@ -29,7 +29,10 @@ session_start();
         </form>
 
         <br>';
-    } 
+    } else
+    {
+        echo("Logged in as: ".$_SESSION['email']);
+    }
     ?>
 
     <form action="present_layer/all_tickets.php" class="inline">
