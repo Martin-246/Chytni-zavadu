@@ -79,9 +79,8 @@ function my_ticket_rows(){
 }
 
 function all_ticket_rows(){
-    $id = get_user_by_email("user@user.com")["id"];
     $html = "";
-    $my_tickets = get_my_tickets($id);
+    $my_tickets = get_all_tickets();
     while($row = $my_tickets->fetch()){
         $my_ticket = get_ticket_data($row);
         $html = $html . "\n<tr>\n";

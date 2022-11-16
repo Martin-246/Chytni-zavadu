@@ -1,12 +1,6 @@
 <?php
 include_once("../bussiness_layer/get_ticket.php");
 include_once("../data_layer/db_user.php");
-session_start();
-if(isset($_SESSION["email"])){
-}else {
-    echo "fatal error";
-    exit();
-}
 echo "
 <table>
 <tr>
