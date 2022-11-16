@@ -24,7 +24,9 @@ form {text-align: center;}
         $res = check_login();
         if($res == 0)
         {
-            echo "Prihlaseny\n";
+            echo "Prihlásenie úspešné";
+            header("refresh:0.5; ../bussiness_layer/redirect.php");
+
         } else if($res == 1)
         {
             echo "Zly email!\n";

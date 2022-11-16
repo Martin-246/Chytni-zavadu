@@ -35,6 +35,7 @@
 
 	if($res == 0)
 	{
-		echo("SI PRIHLASENY");
+		echo("Úspešná registrácia");
+		header("refresh:0.5; ../bussiness_layer/redirect.php");
 	}
 ?>

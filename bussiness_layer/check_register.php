@@ -8,7 +8,6 @@
     function check_registration()
     {
         session_start();
-
         $email = "";
         $pw_hash = "";
         if(isset($_POST['email']))

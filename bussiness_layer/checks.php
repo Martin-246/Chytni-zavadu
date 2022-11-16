@@ -1,8 +1,5 @@
 <?php 
 function is_logged(){
-    if(!session_start()){
-        session_start();
-    }
     if (isset($_SESSION["email"])){
         return 1;
     }else{
@@ -10,6 +7,11 @@ function is_logged(){
         header("refresh:5; ../bussiness_layer/redirect.php");
         exit();
     }
+}
+
+function is_logged_in()
+{
+    return isset($_SESSION['email']);
 }
 
 ?>
