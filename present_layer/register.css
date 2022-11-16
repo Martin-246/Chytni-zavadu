@@ -4,3 +4,15 @@ h2 {
 form {
     text-align: center;
 }
+.password{
+    color:red;
+}
+.email{
+    color:red;
+}
+nav{
+    width:100%;
+    display:flex;
+}
+nav > h3 > a {padding: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;}
+nav > h3 > a:hover {background-color: #848482;color: #FFFFFFFF}

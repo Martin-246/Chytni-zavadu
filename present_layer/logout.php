@@ -1,6 +1,6 @@
 <?php
     session_start();
-    unset($_SESSION["email"]);
+    session_destroy();
     echo("Odhlasujem...");
     header("refresh:0.5; ../bussiness_layer/redirect.php");
 
