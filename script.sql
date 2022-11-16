@@ -6,7 +6,7 @@ DROP TABLE CATEGORY;
 -- create
 CREATE TABLE PERSON (
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
-  PW_HASH binary(32) NOT NULL,
+  PW_HASH binary(64) NOT NULL,
   first_name varchar(32),
   last_name varchar(32),
   email varchar(255) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE TICKET (
   state_from_manager INTEGER NOT NULL,
   msg_from_manager varchar(255),
   time_created timestamp NOT NULL,
-  time_modified timestamp
+  time_modified timestamp NOT NULL
 );
 
 CREATE TABLE SERVICE_REQUEST(
