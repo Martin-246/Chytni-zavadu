@@ -4,3 +4,9 @@ h2 {
 form {
     text-align: center;
 }
+.password{
+    color:red;
+}
+.email{
+    color:red;
+}

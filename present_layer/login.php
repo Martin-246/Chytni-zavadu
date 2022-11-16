@@ -1,20 +1,3 @@
-<head><style>
-h2 {text-align: center;}
-form {text-align: center;}
-</style></head>
-
-<html>
-    <h2> Prihláste sa</h2>
-    <form action='<? $_SERVER['PHP_SELF']?>' method='post'>
-        <label for='email'> E-mail: </label>
-        <input type='text' name='email' id='email'> <br>
-
-        <label for='password'> Heslo: </label>
-        <input type='password' name='password' id='password'> <br>
-
-        <input type='submit' value='Odoslať'>
-    </form>
-</html>
 
 <?php
     include '../bussiness_layer/check_login.php';
@@ -36,3 +19,24 @@ form {text-align: center;}
         }
     }
 ?>
+
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="./register.css"/>
+</head>
+    <h2> Prihláste sa</h2>
+    <form action='<? $_SERVER['PHP_SELF']?>' method='post'>
+        <label for='email'> E-mail: </label>
+        <input type='text' name='email' id='email' value=
+
+            <?php echo(isset($_SESSION['filled_email'])?$_SESSION['filled_email']:"" );?>
+
+        > <br>
+
+        <label for='password'> Heslo: </label>
+        <input type='password' name='password' id='password'> <br>
+
+        <input type='submit' value='Odoslať'>
+    </form>
+</html>
+

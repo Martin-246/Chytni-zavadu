@@ -1,5 +1,7 @@
 <?php
     include '../data_layer/db_user.php';
+    session_start();
+
 
     ## check is email and password are correct
     # @return   0 if OK
@@ -7,7 +9,6 @@
     #           2 if password is wrong
     function check_login()
     {
-        session_start();
         $email = isset($_POST['email']) ? $_POST['email'] : '';
         $password = isset($_POST['password']) ? $_POST['password'] : '';
     
@@ -22,6 +23,7 @@
             return 0;
         } else
         {
+            $_SESSION['filled_email'] = $email;
             return 2;
         }
     }

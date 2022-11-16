@@ -13,7 +13,6 @@ session_start();
     <h1>Chytni závadu!</h1>
 
     <?php // Allow new user to log in
-
     include_once("./bussiness_layer/checks.php");
 
     if( ! is_logged_in())
