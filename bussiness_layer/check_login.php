@@ -1,10 +1,10 @@
 <?php
-    include '../data_layer/load_user_data.php';
+    include '../data_layer/db_user.php';
 
     ## check is email and password are correct
     # @return   0 if OK
     #           1 if email is wrong
-    #           2 if password is wrond
+    #           2 if password is wrong
     function check_login()
     {
         session_start();
@@ -18,8 +18,9 @@
     
         if(hash('sha256',$password) == $user['PW_HASH'])
         {
+            // User is logged in
+            $_SESSION['email'] = $email;
             return 0;
-            $_SESSION['user'] = 'Jozko';
         } else
         {
             return 2;
