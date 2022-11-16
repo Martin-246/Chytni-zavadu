@@ -1,10 +1,15 @@
 <?php
+session_start();
+$author = "user@user.com";
+if (isset($_SESSION["email"])){
+  $author = $_SESSION["email"];
+}
 include_once("../data_layer/db_tickets.php");
 $target_dir = "../img/";
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 if($target_file=="../img/"){
     echo "The new tiket without file has been uploaded.";
-    upload_new_ticket($_POST["category"],$_POST["lng"],$_POST["lat"],$target_file."placeholder-image.png");
+    upload_new_ticket($_POST["category"],$_POST["lng"],$_POST["lat"],$target_file."placeholder-image.png",$author);
     header("refresh:5;redirect.php");
     exit();
 }
@@ -54,7 +59,7 @@ if ($uploadOk == 0) {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     chmod($target_file, 0755);
     echo "The new tiket with file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-    upload_new_ticket($_POST["category"],$_POST["lng"],$_POST["lat"],$target_file);
+    upload_new_ticket($_POST["category"],$_POST["lng"],$_POST["lat"],$target_file,$author);
     header("refresh:5;redirect.php");
   } else {
     echo "Sorry, there was an error uploading your file.";

@@ -1,7 +1,39 @@
 <?php 
 include_once("../bussiness_layer/checks.php");
 session_start();
-if (is_logged()){
-    echo "si prihlaseny";
+is_logged();
+function print_user_from_email($email){ 
+    $pos = strpos($email,"@",0);
+    return substr($email,0,$pos);
 }
 ?>
+<html>
+    <head>
+    <link rel="stylesheet" type="text/css" href="./my_tickets.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="module" src="./my_tickets.js"></script>
+    </head>
+    <body>
+       <nav>
+            <h2 class="back"><a href = "../index.php">Späť</a></h2>
+            <h2 class="main">Moje tikety</h2>
+            <h2 class="user">Prihlásený ako:<br><?php echo print_user_from_email($_SESSION["email"]); ?></h2>
+        </nav> 
+        <div id="table_to_refresh">
+        <table >
+            <tr>
+                <th>ID</th>
+                <th>Kategoria</th>
+                <th>Pozicia</th>
+                <th>Status</th>
+                <th>Sprava od manazera</th>
+                <th>Cas vytvorenia</th>
+                <th>Cas modifikacie</th>
+                <th>Fotka problemu</th>
+                <th>Akcia</th>
+            </tr>
+            
+        </table>
+        </div>
+    </body>
+</html>

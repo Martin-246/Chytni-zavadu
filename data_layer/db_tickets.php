@@ -1,6 +1,7 @@
 <?php
 
 include_once("db_setup.php");
+include_once("db_user.php");
 
 function get_ticket_category($number){
     $db = get_pdo();
@@ -18,8 +19,14 @@ function get_all_tickets(){
     return $db->query("SELECT * FROM TICKET");
 }
 
-function upload_new_ticket($category,$lng,$lat,$file){
+function upload_new_ticket($category,$lng,$lat,$file,$author){
     $db = get_pdo();
-    $stmt =$db->query("INSERT INTO TICKET (category, photo, lng, lat, state_from_manager, time_created, time_modified) VALUES ('".$category."', '".$file."', '".$lng."', '".$lat."', '0', NOW(), NOW() );");
+    $user = get_user_by_email($author);
+    $stmt =$db->query("INSERT INTO TICKET (category, photo, lng, lat, state_from_manager, time_created, time_modified, submitted_by) VALUES ('".$category."', '".$file."', '".$lng."', '".$lat."', '0', NOW(), NOW(), '".$user["id"]."' );");
+}
+
+function get_my_tickets($id){
+    $db = get_pdo();
+    return $db->query("SELECT * FROM TICKET WHERE submitted_by=".$id.";");
 }
 ?>

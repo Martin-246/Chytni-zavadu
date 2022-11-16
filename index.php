@@ -51,11 +51,20 @@ session_start();
     {
 
         echo '
+        <form action="present_layer/my_tickets.php" class="inline">
+            <button>Moje tikety</button>
+        </form>
+
+        <br>
+
         <form action="present_layer/logout.php" class="inline">
             <button>Odhlásiť</button>
         </form>
 
-        <br>';
+        <br>
+        ';
+
+
     } 
     ?>
 

@@ -1,6 +1,6 @@
 <?php
 include_once("../data_layer/db_tickets.php");
-
+include_once("../data_layer/db_user.php");
 function get_ticket_data($row){
     $ticket[0] = $row["id"];
     $ticket[1] = get_ticket_category($row["category"]);
@@ -43,5 +43,36 @@ function print_all_tickets_table_row(){
                 }
                 echo "</tr>";
             }
+}
+
+function my_ticket_rows(){
+    $id;
+    $html = "";
+    if(isset($_SESSION["email"])){
+        $id =  get_user_by_email($_SESSION["email"])["id"];
+    }else {
+        echo "fatal error";
+        exit();
+    }
+    $my_tickets = get_my_tickets($id);
+    while($row = $my_tickets->fetch()){
+        $my_ticket = get_ticket_data($row);
+        $html = $html . "\n<tr>\n";
+        for($i=0;$i<=count($my_ticket);$i++){
+            if($i==2){
+                $html = $html . "<td>". $my_ticket[$i]." : ". $my_ticket[$i+1] ."</td>\n";
+                $i++;
+            }else if($i == 8){
+                $html = $html . '<td><img src="'. $my_ticket[$i] .'" alt="Chyba" </td>'."\n";
+            }else if($i == count($my_ticket)){
+                $html = $html . '<td><a href = "../index.php">Vymazat</a></td>'."\n";
+            }else {
+                $html = $html . "<td>". $my_ticket[$i] ."</td>"."\n";
+            }
+        }
+        $html = $html . "</tr>\n";
+    }
+    return $html;
+
 }
 ?>
