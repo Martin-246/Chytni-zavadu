@@ -39,6 +39,12 @@ session_start();
 
     <br>
 
+    <form action="present_layer/all_tickets_map.php" class="inline">
+        <button>Mapa</button>
+    </form>
+
+    <br>
+
     <form action="present_layer/new_ticket.php" class="inline">
         <button>Nový tiket</button>
     </form>
