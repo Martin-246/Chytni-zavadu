@@ -1,5 +1,4 @@
 <?php
-
 include_once("../data_layer/db_tickets.php");
 
 function get_ticket_data($row){

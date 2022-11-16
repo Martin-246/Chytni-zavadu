@@ -26,6 +26,12 @@ form {text-align: center;}
 
     <br>
 
+    <form action="present_layer/new_ticket.php" class="inline">
+        <button>Nový tiket</button>
+    </form>
+
+    <br>
+
 
 </html>
 

@@ -1,0 +1,25 @@
+body{
+    font-family: Arial, Helvetica;
+    margin:0%;
+    font-size: 1rem;
+    min-width: 350px;
+}
+h2 {text-align: center;}
+h3{text-align: center;margin-top:0px;}
+nav{
+    width:100%;
+    display:flex;
+}
+.grow1{flex-grow: 1;text-align:left}
+.grow10{flex-grow: 1.25;text-align:left}
+#page {
+    min-width: 500px;
+    width:90%;margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    flex-direction:column;
+}
+h2 > a {padding: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;}
+h2 > a:hover {background-color: #848482;color: #FFFFFFFF}
+
+#map {height: 400px; width: 100%;}
