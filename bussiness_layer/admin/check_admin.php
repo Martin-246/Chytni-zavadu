@@ -1,6 +1,6 @@
 <?php
-    include_once('../../data_layer/db_user.php');
-    include_once('../../bussiness_layer/constants.php');
+    include_once('./data_layer/db_user.php');
+    include_once('./bussiness_layer/constants.php');
 
     if (session_id() == "")
         session_start();

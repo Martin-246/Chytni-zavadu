@@ -8,6 +8,9 @@ form {text-align: center;}
 session_start();
 
 include_once("./bussiness_layer/checks.php");
+include_once("./bussiness_layer/admin/check_admin.php");
+if( is_admin() )
+    header("Location: ./admin.php");
 
 
 ?>
