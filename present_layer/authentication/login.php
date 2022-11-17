@@ -1,23 +1,7 @@
 
 <?php
-    include '../bussiness_layer/check_login.php';
-
-    if( isset($_POST['email']) )
-    {
-        $res = check_login();
-        if($res == 0)
-        {
-            echo "Prihlásenie úspešné";
-            header("refresh:0.5; ../bussiness_layer/redirect.php");
-
-        } else if($res == 1)
-        {
-            echo "Zly email!\n";
-        } else if($res == 2)
-        {
-            echo "Zle heslo!\n";
-        }
-    }
+    include '../../bussiness_layer/authentication/check_login.php';
+    $res = check_login();
 ?>
 
 <html>
@@ -25,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="./register.css"/>
 </head>
     <nav>
-        <h3 class="back"><a href = "../index.php">Späť</a></h2>
+        <h3 class="back"><a href = "../../index.php">Späť</a></h2>
     </nav> 
     <h2> Prihláste sa</h2>
     <form action='<? $_SERVER['PHP_SELF']?>' method='post'>
@@ -42,4 +26,22 @@
         <input type='submit' value='Odoslať'>
     </form>
 </html>
+
+<?php
+    if( isset($_POST['email']) )
+    {
+        if($res == 0)
+        {
+            echo "Prihlásenie úspešné";
+            header("refresh:0.5; ../../bussiness_layer/redirect.php");
+
+        } else if($res == 1)
+        {
+            echo "<div class='err_msg'>Zly email!</div>";
+        } else if($res == 2)
+        {
+            echo "<div class='err_msg'>Zle heslo!</div>";
+        }
+    }
+?>
 

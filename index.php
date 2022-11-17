@@ -17,13 +17,13 @@ include_once("./bussiness_layer/checks.php");
     if( ! is_logged_in()) // Allow new user to log in
     {
         echo '
-        <form action="present_layer/login.php" class="inline">
+        <form action="present_layer/authentication/login.php" class="inline">
             <button>Prihlásenie</button>
         </form>
 
         <br>
 
-        <form action="present_layer/register.php" class="inline">
+        <form action="present_layer/authentication/register.php" class="inline">
             <button>Regristrácia</button>
         </form>
 
@@ -66,7 +66,7 @@ include_once("./bussiness_layer/checks.php");
 
         <br>
 
-        <form action="present_layer/logout.php" class="inline">
+        <form action="present_layer/authentication/logout.php" class="inline">
             <button>Odhlásiť</button>
         </form>
 

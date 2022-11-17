@@ -1,5 +1,5 @@
 <?php
-	include_once '../bussiness_layer/check_register.php';
+	include_once '../../bussiness_layer/authentication/check_register.php';
 	$res = check_registration();
 ?>
 
@@ -9,7 +9,7 @@
 </head>
 
 	<nav>
-        <h3 class="back"><a href = "../index.php">Späť</a></h2>
+        <h3 class="back"><a href = "../../index.php">Späť</a></h2>
     </nav> 
 
 	<h2>Registrácia</h2>
@@ -42,7 +42,7 @@
 			<?php echo(isset($_SESSION['filled_phone'])?$_SESSION['filled_phone']:"" );?>
 		>
 
-		<input type="submit">
+		<input type="submit"> 
 	</form>
 
 </html>
@@ -52,7 +52,7 @@
 		{
 			case 0:
 				echo("Úspešná registrácia");
-				header("refresh:0.5; ../bussiness_layer/redirect.php");
+				header("refresh:0.5; ../../bussiness_layer/redirect.php");
 				break;
 			case 1:
 				echo("<div class='err_msg'>Zadajte heslo!</div>");

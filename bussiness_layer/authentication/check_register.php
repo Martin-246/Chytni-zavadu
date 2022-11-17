@@ -1,6 +1,6 @@
 <?php
     session_start();
-    include_once('../data_layer/db_user.php');
+    include_once('../../data_layer/db_user.php');
 
     # @return   0 if OK
     #           1 if email is not given
@@ -57,7 +57,7 @@
 
 
     function email_ok($email)
-    {
+    { 
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
