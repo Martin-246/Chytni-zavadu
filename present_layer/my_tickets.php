@@ -1,5 +1,6 @@
 <?php 
-include_once("../bussiness_layer/checks.php");
+chdir('..'); // ---> root
+include_once("./bussiness_layer/checks.php");
 session_start();
 is_logged();
 function print_user_from_email($email){ 

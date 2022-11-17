@@ -1,0 +1,34 @@
+<head><style>
+h1 {text-align: center;}
+form {text-align: center;}
+</style></head>
+
+<?php
+include_once("./bussiness_layer/checks.php");
+session_start();
+is_logged_worker();
+?>
+
+<html>
+<h1>Chytni závadu!</h1>
+
+<?php echo("Logged in as: ".$_SESSION['email']); ?>
+
+<form action="present_layer/worker_requests.php" class="inline">
+        <button>Service requests</button>
+    </form>
+
+    <br>
+
+    <form action="present_layer/all_tickets_map.php" class="inline">
+        <button>Mapa</button>
+    </form>
+
+    <br>
+
+    <form action="present_layer/logout.php" class="inline">
+        <button>Odhlásiť</button>
+    </form>
+
+    <br>
+</html>

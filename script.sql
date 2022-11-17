@@ -1,4 +1,4 @@
-DROP TABLE SERVICE_REQUEST;
+﻿DROP TABLE SERVICE_REQUEST;
 DROP TABLE TICKET;
 DROP TABLE PERSON;
 DROP TABLE CATEGORY;
@@ -36,12 +36,14 @@ CREATE TABLE TICKET (
 
 CREATE TABLE SERVICE_REQUEST(
   id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  worker_id INTEGER NOT NULL,
+  foreign key (worker_id) references PERSON(id),
   for_ticket INTEGER NOT NULL,
   foreign key (for_ticket) references TICKET(id),
   expected_date date,
   state INTEGER NOT NULL,
   time_spent INTEGER,
-  comment_from_technic varchar(255),
+  comment_from_worker varchar(255),
   price float(10,2)
 );
 

@@ -6,16 +6,15 @@ form {text-align: center;}
 
 <?php
 session_start();
+include_once("./bussiness_layer/checks.php");
 ?>
 
 <html>
 
     <h1>Chytni závadu!</h1>
 
-    <?php // Allow new user to log in
-    include_once("./bussiness_layer/checks.php");
-
-    if( ! is_logged_in())
+    <?php
+    if( ! is_logged_in()) // Allow new user to log in
     {
         echo '
         <form action="present_layer/login.php" class="inline">
@@ -54,9 +53,11 @@ session_start();
     <br>
 
 
-    <?php // Allow logged in user to log out
-    if( is_logged_in())
+    <?php
+    if( is_logged_in()) // Allow logged in user to log out
     {
+        // If logged in user is a worker
+        worker_index();
 
         echo '
         <form action="present_layer/my_tickets.php" class="inline">
@@ -71,8 +72,6 @@ session_start();
 
         <br>
         ';
-
-
     } 
     ?>
 
