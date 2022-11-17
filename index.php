@@ -6,7 +6,10 @@ form {text-align: center;}
 
 <?php
 session_start();
+
 include_once("./bussiness_layer/checks.php");
+
+
 ?>
 
 <html>

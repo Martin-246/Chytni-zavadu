@@ -1,5 +1,6 @@
 <?php 
 include_once("./data_layer/db_user.php");
+include_once('./bussiness_layer/constants.php');
 
 function is_logged(){
     if (isset($_SESSION["email"])){
@@ -37,7 +38,7 @@ function worker_index()
 include_once("./data_layer/db_user.php");
     if(is_logged_in()){
         $role = get_user_by_email($_SESSION["email"])["role"];
-        if(!strncmp($role, '1', 1)) // int role?
+        if(!strncmp($role, WORKER, 1)) // int role?
         {
             header("Location: ./worker.php");
         }

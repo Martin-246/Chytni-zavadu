@@ -1,3 +1,4 @@
 <?php
-header("Location: ../index.php");
+header("Location: ../present_layer/admin/admin.php");
+
 ?>
