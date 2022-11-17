@@ -7,8 +7,12 @@
     #           2 if password is not given
     #           3 if email already exists
     #           4 if email is not in correct format
+    #           5 if nothing was submitted
     function check_registration()
     {
+        if( ! registration_submitted() )
+            return 5;
+
         $email = "";
         $pw_hash = "";
         
@@ -55,6 +59,11 @@
     function email_ok($email)
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+
+    function registration_submitted()
+    {
+        return (isset($_POST['f_name']) || isset($_POST['l_name']) ||  isset($_POST['email']) || isset($_POST['password']) || isset($_POST['phone']) );
     }
 
 ?>

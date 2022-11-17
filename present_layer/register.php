@@ -1,28 +1,6 @@
 <?php
-	include '../bussiness_layer/check_register.php';
-
+	include_once '../bussiness_layer/check_register.php';
 	$res = check_registration();
-
-	switch($res)
-	{
-		case 0:
-			echo("Úspešná registrácia");
-			header("refresh:0.5; ../bussiness_layer/redirect.php");
-			break;
-		case 1:
-			echo("Zadajte heslo!");
-			break;
-		case 2:
-			echo("Zadajte email!");
-			break;
-		case 3:
-			echo("Email uz existuje!");
-			break;
-		case 4:
-			echo("Zly email!");
-			break;
-	}
-
 ?>
 
 <html>
@@ -68,6 +46,28 @@
 	</form>
 
 </html>
+
+<?php
+		switch($res)
+		{
+			case 0:
+				echo("Úspešná registrácia");
+				header("refresh:0.5; ../bussiness_layer/redirect.php");
+				break;
+			case 1:
+				echo("<div class='err_msg'>Zadajte heslo!</div>");
+				break;
+			case 2:
+				echo("<div class='err_msg'>Zadajte email!</div>");
+				break;
+			case 3:
+				echo("<div class='err_msg'>Email uz existuje!</div>");
+				break;
+			case 4:
+				echo("<div class='err_msg'>Zly email!</div>");
+				break;
+		}
+?>
 
 
 
