@@ -1,6 +1,7 @@
 
 <?php
-    include '../../bussiness_layer/authentication/check_login.php';
+    chdir('../..'); // root
+    include './bussiness_layer/authentication/check_login.php';
     $res = check_login();
 ?>
 

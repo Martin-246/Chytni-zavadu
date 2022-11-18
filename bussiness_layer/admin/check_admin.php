@@ -1,6 +1,10 @@
 <?php
+    chdir('.'); // root
     include_once('./data_layer/db_user.php');
     include_once('./bussiness_layer/constants.php');
+    include_once('./bussiness_layer/authentication/check_register.php');
+    include_once('./bussiness_layer/constants.php');
+
 
     if (session_id() == "")
         session_start();
@@ -16,4 +20,10 @@
         
         return false;
     }
+
+    function check_add_manager()
+    {
+        return check_registration(MANAGER,false);
+    }
+
 ?>

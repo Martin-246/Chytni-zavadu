@@ -1,21 +1,25 @@
 <?php
-    chdir('../..'); // root
-	include_once './bussiness_layer/authentication/check_register.php';
-	$res = check_registration();
+    chdir('../..'); // ---> root
+    include_once('./bussiness_layer/admin/check_admin.php');
+
+    $res = check_add_manager();
+    
 ?>
 
 <html>
-<head>
-	<link rel="stylesheet" type="text/css" href="./register.css"/>
-</head>
 
-	<nav>
-        <h3 class="back"><a href = "../../index.php">Späť</a></h2>
+    <head>
+            <link rel="stylesheet" type="text/css" href="../../present_layer/authentication/register.css"/>
+    </head>
+
+
+    <nav>
+        <h3 class="back"><a href = "../../admin.php">Späť</a></h2>
     </nav> 
 
-	<h2>Registrácia</h2>
+    <h2>Pridať správcu mesta</h2>
 
-	<form action='<? $_SERVER['PHP_SELF']?>' method='post'>
+    <form action='<? $_SERVER['PHP_SELF']?>' method='post'>
 		<label for="f_name">Krstné meno:</label>
 		<input type="text" name="f_name" id="f_name" value=
 			<?php echo(isset($_SESSION['filled_f_name'])?$_SESSION['filled_f_name']:"" );?>
@@ -52,7 +56,7 @@
 		switch($res)
 		{
 			case 0:
-				echo("Úspešná registrácia");
+				echo("Správca úspešne pridaný");
 				header("refresh:0.5; ../../bussiness_layer/redirect.php");
 				break;
 			case 1:
@@ -69,6 +73,3 @@
 				break;
 		}
 ?>
-
-
-

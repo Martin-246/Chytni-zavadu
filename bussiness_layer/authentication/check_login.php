@@ -1,6 +1,8 @@
 <?php
-    include('../../data_layer/db_user.php');
-    session_start();
+    include('./data_layer/db_user.php');
+    include_once('./bussiness_layer/authentication/check_register.php');
+    if (session_id() == "")
+        session_start();
 
 
     ## check is email and password are correct
@@ -19,6 +21,7 @@
         if(hash('sha256',$password) == $user['PW_HASH'])
         {
             // User is logged in
+            unset_filled_data();
             $_SESSION['email'] = $email;
             return 0;
         } else

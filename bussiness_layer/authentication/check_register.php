@@ -1,6 +1,7 @@
 <?php
-    session_start();
-    include_once('../../data_layer/db_user.php');
+    if (session_id() == "")
+        session_start();
+    include_once('./data_layer/db_user.php');
 
     # @return   0 if OK
     #           1 if email is not given
@@ -8,7 +9,7 @@
     #           3 if email already exists
     #           4 if email is not in correct format
     #           5 if nothing was submitted
-    function check_registration()
+    function check_registration($role = 0, $also_login = true)
     {
         if( ! registration_submitted() )
             return 5;
@@ -45,12 +46,16 @@
             return 3;
         }
 
-        $_SESSION['email'] = $email;
+        // Data is valid
+        if($also_login)
+            $_SESSION['email'] = $email;
 
         $f_name = isset($_POST['f_name']) ? $_POST['f_name'] : "";
         $l_name = isset($_POST['l_name']) ? $_POST['l_name'] : "";
 
-        insert_user($f_name,$l_name,$email,$pw_hash);
+        insert_user($f_name,$l_name,$email,$pw_hash,$role);
+
+        unset_filled_data();
 
         return 0;
     }
@@ -64,6 +69,14 @@
     function registration_submitted()
     {
         return (isset($_POST['f_name']) || isset($_POST['l_name']) ||  isset($_POST['email']) || isset($_POST['password']) || isset($_POST['phone']) );
+    }
+
+    function unset_filled_data()
+    {
+        unset($_SESSION['filled_email']);
+        unset($_SESSION['filled_f_name']);
+        unset($_SESSION['filled_l_name']);
+        unset($_SESSION['filled_phone']);
     }
 
 ?>
