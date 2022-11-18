@@ -26,7 +26,7 @@ is_logged_worker();
 
     <br>
 
-    <form action="present_layer/logout.php" class="inline">
+    <form action="present_layer/authentication/logout.php" class="inline">
         <button>Odhlásiť</button>
     </form>
 

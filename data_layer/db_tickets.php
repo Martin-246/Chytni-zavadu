@@ -3,6 +3,11 @@
 include_once("db_setup.php");
 include_once("db_user.php");
 
+function get_ticket($id){
+    $db = get_pdo();
+    return $db->query("SELECT * FROM TICKET WHERE id=".$id.";");
+}
+
 function get_ticket_category($number){
     $db = get_pdo();
     $stmt = $db->query("SELECT *  FROM CATEGORY WHERE id=".$number.";");

@@ -1,6 +1,7 @@
 <?php
-include_once("../bussiness_layer/get_ticket.php");
-include_once("../data_layer/db_user.php");
+chdir('..'); // ---> root
+include_once("./bussiness_layer/get_ticket.php");
+include_once("./data_layer/db_user.php");
 echo "
 <table>
 <tr>
