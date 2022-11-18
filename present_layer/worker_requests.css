@@ -21,5 +21,5 @@ table{border-collapse: collapse;width: 100%;}
 th {border: 1px solid #000000;}
 td {border: 1px solid #000000;text-align: center;} /*border-bottom*/
 img {width:150px;height:150px;}
-td > a {padding: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;font-weight: bold;}
+td > a {padding-left: 10px;padding-right: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;font-weight: bold;height: 20px;}
 td > a:hover {background-color: #ff0000;color: #FFFFFFFF;}

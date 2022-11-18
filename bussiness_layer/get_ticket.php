@@ -1,12 +1,14 @@
 <?php
 include_once("./data_layer/db_tickets.php"); // first dot was erased
 include_once("./data_layer/db_user.php"); // first dot was erased
+include_once("./bussiness_layer/constants.php");
 function get_ticket_data($row){
+    global $description_state;
     $ticket[0] = $row["id"];
     $ticket[1] = get_ticket_category($row["category"]);
     $ticket[2] = $row["lng"];
     $ticket[3] = $row["lat"];
-    $ticket[4] = $row["state_from_manager"];
+    $ticket[4] = $description_state[$row["state_from_manager"]];
     if (isset($row["msg_from_manager"])){
         $ticket[5] = $row["msg_from_manager"];
     }else {
@@ -46,7 +48,7 @@ function print_all_tickets_table_row(){
 }
 
 function my_ticket_rows(){
-    $id;
+    $id = "";
     $html = "";
     if(isset($_SESSION["email"])){
         $id =  get_user_by_email($_SESSION["email"])["id"];
