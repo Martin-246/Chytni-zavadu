@@ -22,6 +22,7 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script type="module" src="./user_list.js"></script>
+        <script type="text/javascript" src="../../bussiness_layer/admin/remove_user.js"></script>
     </head>
 
     <h2 class="main">Správa užívateľov</h2>

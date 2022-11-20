@@ -2,7 +2,6 @@ setInterval(function () {
     $.ajax({
         url:'user_list_data.php',
         success: function(response){
-            console.log(response);
             $('#table_to_refresh').html(response);
         }
     });

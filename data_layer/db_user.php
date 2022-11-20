@@ -43,5 +43,14 @@
         return $stmt;
     }
 
+    function remove_user($id)
+    {
+        $pdo = get_pdo();
+
+        $stmt = $pdo->prepare('DELETE FROM PERSON WHERE id = ?;');
+
+        $stmt->execute([$id]);
+    }
+
 
 ?>
