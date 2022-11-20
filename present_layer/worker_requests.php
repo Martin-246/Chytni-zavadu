@@ -18,13 +18,17 @@ function print_user_from_email($email){
     <script type="text/javascript">
     function Expand($row_num)
     {
-         var elem=document.getElementById("RowNested" + $row_num);
-         var hide = elem.style.display =="none";
-         if (hide) {
-             elem.style.display="table-row";
-        } 
-        else {
-           elem.style.display="none";
+         var elem=document.getElementsByClassName("RowNested" + $row_num);
+
+         for(var i = 0; i < elem.length; i++)
+         {
+            var hide = elem[i].style.display =="none";
+            if (hide) {
+                elem[i].style.display="table-row";
+            } 
+            else {
+            elem[i].style.display="none";
+            }
         }
     }
      </script>   
@@ -43,9 +47,9 @@ function print_user_from_email($email){
                 <th>Request ID</th>
                 <th>Kategoria</th>
                 <th>Pozicia(Ulica)</th>
-                <th>Expected date</th>
+                <th>Expected/Fixed date</th>
                 <th>State</th>
-                <th>Akcia</th>
+                <th style='border:0px; width:65px'></th>
             </tr>
         <?php echo request_ticket_rows(); ?>
         </table>

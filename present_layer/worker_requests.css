@@ -3,7 +3,7 @@ body{
     margin:0%;
     font-size: 1rem;
     min-width: 800px;
-    width:75%;
+    width:70%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -18,8 +18,20 @@ h2 {text-align: center;}
 .main{flex-grow: 8;text-align:center}
 .user{flex-grow: 1;text-align:right}
 table{border-collapse: collapse;width: 100%;}
-th {border: 1px solid #000000;}
+tr {height: 35px;}
+.intr {height: 30px;}
+.inhdr {border:0px; font-size: 20px; background-color: #F2E7D5;}
+.indescr {font-weight: bold;}
+.intextbox {text-align:left; padding-left:1%;}
+th {border: 0px solid #000000;}
 td {border: 1px solid #000000;text-align: center;} /*border-bottom*/
-img {width:150px;height:150px;}
+img {width:125px;height:125px;}
 td > a {padding-left: 10px;padding-right: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;font-weight: bold;height: 20px;}
-td > a:hover {background-color: #ff0000;color: #FFFFFFFF;}
+td > a:hover {background-color: #848482;color: #FFFFFFFF;}
+
+
+
+
+/* <tr style='height: 0;'>
+<td colspan='5'; style='text-align:right; border:0px'>Edited (by mngr): $ticket[7]</td>
+</tr> */

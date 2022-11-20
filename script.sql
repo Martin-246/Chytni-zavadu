@@ -40,9 +40,10 @@ CREATE TABLE SERVICE_REQUEST(
   foreign key (worker_id) references PERSON(id),
   for_ticket INTEGER NOT NULL,
   foreign key (for_ticket) references TICKET(id),
+  description_from_manager varchar(255),
   expected_date date,
   state INTEGER NOT NULL,
-  time_spent INTEGER,
+  date_fixed date,
   comment_from_worker varchar(255),
   price float(10,2)
 );
@@ -55,6 +56,5 @@ INSERT INTO CATEGORY (description) VALUES ("Poškodená cesta");
 INSERT INTO CATEGORY (description) VALUES ("Problém s vozovkou");
 INSERT INTO CATEGORY (description) VALUES ("Spadnutý strom");
 INSERT INTO CATEGORY (description) VALUES ("Iné");
-
 
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Basic","User","user@user.com","56b1db8133d9eb398aabd376f07bf8ab5fc584ea0b8bd6a1770200cb613ca005",0);

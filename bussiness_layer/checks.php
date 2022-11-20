@@ -7,7 +7,7 @@ function is_logged(){
         return 1;
     }else{
         echo "Na túto akciu musíš byť prihlasený! Redirecting to index....";
-        header("refresh:5; ../bussiness_layer/redirect.php");
+        header("refresh:3; ../bussiness_layer/redirect.php");
         exit();
     }
 }
@@ -28,7 +28,7 @@ function is_logged_worker()
     }else{
         //$pwd = (dir(getcwd()))->path;
         echo "Na túto akciu musíš mať rolu údržbára! Redirecting to index....";
-        header("refresh:5; ../bussiness_layer/redirect.php");
+        header("refresh:3; ../bussiness_layer/redirect.php");
         exit();
     }
 }

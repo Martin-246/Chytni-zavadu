@@ -37,55 +37,179 @@ function request_ticket_rows(){
         //REQUEST
         // $row_request['id'] +
         // $row_request['for_ticket'] +
-        // $row_request['state']
-        // $row_request['expected_date']
-        // $row_request['price']
-        // $row_request['time_spent']
-        // $row_request['comment_from_worker']
+        // $row_request['state'] + 
+        // $row_request['expected_date'] +
+        // $row_request['price'] +
+        // $row_request['date_fixed'] + 
+        // $row_request['comment_from_worker'] +
+        // $row_request['description_from_manager'] +
 
-        $html = $html . "<tr>\n";
+        if($row_request['state'] == 0)
+            $html = $html . "<tr style='background-color: #e64747;'>\n";
+        else if($row_request['state'] == 1)
+        $html = $html . "<tr style='background-color: #e6e22e;'>\n";
+        else if($row_request['state'] == 2)
+            $html = $html . "<tr style='background-color: #5cb935;'>\n";
         $html = $html . "<td>". $row_request['id'] ."</td>"."\n"; //request id
         $html = $html . "<td>". $ticket[1] ."</td>"."\n"; //category
         $html = $html . "<td>". $ticket[2]." : ". $ticket[3] ."</td>\n"; // lng:lat
-        $html = $html . "<td>". $row_request['expected_date'] ."</td>"."\n"; //expected_date
+        if($row_request['state'] != 2)
+            $html = $html . "<td>". $row_request['expected_date'] ."</td>"."\n"; //expected_date
+        else
+            $html = $html . "<td>". $row_request['date_fixed'] ."</td>"."\n"; //fixed_date
         $html = $html . "<td>". $row_request['state'] ."</td>"."\n"; //request_state
-        $html = $html . "<td><a id=\"Link\" onclick=\"Expand(". $counter .");\" href=\"#\">Expand</a></td>"."\n";
+        $html = $html . "<td style='border:0px; background-color: #FFFFFFFF'><a id=\"Link\" onclick=\"Expand(".$counter.");\" href=\"#\">EX</a></td>"."\n";
         $html = $html . "</tr>\n";
         $html = $html . 
         "
-        <tr id=\"RowNested". $counter ."\" style=\"display:none\">
+        <tr class=\"RowNested$counter\" style=\"display:none\">
         <td colspan='6'>
         <table>
-        <tr>
-            <td colspan='3'; style='text-align:right'>Edited (by mngr): $ticket[7]</td>
+        <colgroup>
+        <col width='25%'>
+        <col width='6.25%'>
+        <col width='6.25%'>
+        <col width='12.5%'>
+        <col width='25%'>
+        <col width='25%'>
+        </colgroup>
+        <tr class='intr'>
+            <th colspan='6' class='inhdr'>Request</th>
         </tr>
-        <tr>
-            <th colspan='3'>Ticket</th>
+        <tr class='intr'>
+            <td class='indescr' colspan='1'>Ticket ID</td>
+            <td colspan='4'>".$row_request['for_ticket']."</td>
+            <td rowspan='4' colspan='1'><img src='$ticket[8]' alt=\"Chyba\"</td>
         </tr>
-        <tr>
-            <td>Ticket ID</td>
-            <td>".$row_request['for_ticket']."</td>
-            <td rowspan='4'><img src='$ticket[8]' alt=\"Chyba\"</td>
+        <tr class='intr'>
+            <td class='indescr' colspan='1'>Category</td>
+            <td colspan='4'>$ticket[1]</td>
         </tr>
-        <tr>
-            <td>Category</td>
-            <td>$ticket[1]</td>
+        <tr class='intr'>
+            <td class='indescr' colspan='1'>Position</td>
+            <td colspan='4'>$ticket[2] : $ticket[3]</td>
         </tr>
-        <tr>
-            <td>Position</td>
-            <td>$ticket[2] : $ticket[3]</td>
+        <tr class='intr'>
+            <td class='indescr' colspan='1'>Location</td>
+            <td colspan='4'>Brno-Stred</td>
         </tr>
-        <tr>
-            <td>Location</td>
-            <td>Brno-Stred</td>
-        </tr>
-        <tr>
-            <th colspan='3'>Service</th>
+        <tr class='intr'>
+            <td class='indescr' colspan='1'>Assignment</td>
+            <td colspan='5' style='text-align:left; padding-left:1%;'>".$row_request['description_from_manager']."</td>
         </tr>
         </table>
         </td>
         </tr>
         ";
+
+        if($row_request['state'] == 0) // state constant TODO
+        {
+            $html = $html .
+            "
+            <tr class=\"RowNested$counter\" style=\"display:none\">
+            <td colspan='7'>
+            <table>
+            <colgroup>
+            <col width='25%'>
+            <col width='25%'>
+            <col width='25%'>
+            <col width='25%'>
+            </colgroup>
+            <tr class='intr'>
+                <th colspan='4' class='inhdr'>Service</th>
+            </tr>
+            <tr class='intr'>
+                <form id='form$counter' method='post' action='../bussiness_layer/worker_0_1.php' enctype='multipart/form-data'>
+                <td class='indescr' colspan='1'>Expected date</td>
+                <td colspan='1'><input type='date' id='expected_date' name='expected_date'></td>
+                <td class='indescr' colspan='1'>Price</td>
+                <td colspan='1'><input type='number' step='0.01' id='price' name='price'><br></td>
+            </tr>
+            <tr class='intr'>
+                <td class='indescr' colspan='1'>Comment</td>
+                <td colspan='3'><input type='text' id='comment' name='comment'></td>
+            </tr>
+            <tr>
+                <td colspan='4'><input type = 'submit' name = 'contains_request_id' value='Send_".$row_request['id']."'></td>
+            </form>
+            </tr>
+            </table>
+            </td>
+            </tr>
+            ";
+        }
+        else if($row_request['state'] == 1)
+        {
+            $html = $html .
+            "
+            <tr class=\"RowNested$counter\" style=\"display:none\">
+            <td colspan='7'>
+            <table>
+            <colgroup>
+            <col width='25%'>
+            <col width='25%'>
+            <col width='25%'>
+            <col width='25%'>
+            </colgroup>
+            <tr class='intr'>
+                <th colspan='4' class='inhdr'>Service</th>
+            </tr>
+            <tr class='intr'>
+                <td class='indescr' colspan='1'>Expected date</td>
+                <td colspan='1'>".$row_request['expected_date']."</td>
+                <td class='indescr' colspan='1'>Price</td>
+                <td colspan='1'>".$row_request['price']."</td>
+            </tr>
+            <tr class='intr'>
+                <td class='indescr' colspan='1'>Comment</td>
+                <td colspan='3' style='text-align:left; padding-left:1%;'>".$row_request['comment_from_worker']."</td>
+            </tr>
+            <tr>
+            <form id='form$counter' method='post' action='../bussiness_layer/worker_1_2.php' enctype='multipart/form-data'>
+                <td colspan='4'><input type = 'submit' name = 'contains_request_id' value='FINISH REQUEST_".$row_request['id']."'></td>
+            </form>
+            </tr>
+            </table>
+            </td>
+            </tr>
+            ";
+        }
+        else if($row_request['state'] == 2)
+        {
+            $html = $html .
+            "
+            <tr class=\"RowNested$counter\" style=\"display:none\">
+            <td colspan='7'>
+            <table>
+            <colgroup>
+            <col width='18.75%'>
+            <col width='6.25%'>
+            <col width='12.5%'>
+            <col width='18.75%'>
+            <col width='18.75%'>
+            <col width='12.5%'>
+            <col width='12.5%'>
+            </colgroup>
+            <tr class='intr'>
+                <th colspan='7' class='inhdr'>Service</th>
+            </tr>
+            <tr class='intr'>
+                <td class='indescr' colspan='1'>Expected date</td>
+                <td colspan='2'>".$row_request['expected_date']."</td>
+                <td class='indescr' colspan='1'>Fixed date</td>
+                <td colspan='1'>".$row_request['date_fixed']."</td>
+                <td class='indescr' colspan='1'>Price</td>
+                <td colspan='1'>".$row_request['price']."</td>
+            </tr>
+            <tr class='intr'>
+                <td class='indescr' colspan='2'>Comment</td>
+                <td colspan='5' style='text-align:left; padding-left:1%;'>".$row_request['comment_from_worker']."</td>
+            </tr>
+            </table>
+            </td>
+            </tr>
+            ";
+        }
     
     $counter++;
     }
