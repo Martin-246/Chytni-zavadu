@@ -1,6 +1,7 @@
 <?php
     chdir('../..'); // ---> root
     include_once('./bussiness_layer/admin/check_admin.php');
+    enforce_admin();
 
     $res = check_add_manager();
     

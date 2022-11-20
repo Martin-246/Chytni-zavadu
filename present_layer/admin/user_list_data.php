@@ -1,5 +1,9 @@
 <?php
     chdir('../..'); // root
+
+    include_once('./bussiness_layer/admin/check_admin.php');
+    enforce_admin();
+
     include_once('./data_layer/db_user.php');
     include_once('./bussiness_layer/admin/user_table_data.php');
 

@@ -1,18 +1,8 @@
 <?php
     chdir('../..'); // ---> root
-
-    if (session_id() == "")
-        session_start();
-
     include_once('./bussiness_layer/admin/check_admin.php');
 
-    if( ! is_admin() )
-    {
-        // user needs to be logged in as ADMINISTRATOR
-        header('refresh:1; ../../index.php');
-        echo("Nie ste administrátor!");
-        exit();
-    }
+    enforce_admin();
 
 ?>
 

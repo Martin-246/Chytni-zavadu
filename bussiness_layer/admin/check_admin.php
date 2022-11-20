@@ -26,4 +26,18 @@
         return check_registration(MANAGER,false);
     }
 
+    function enforce_admin()
+    {
+        if (session_id() == "")
+            session_start();
+
+        if( ! is_admin() )
+        {
+            // user needs to be logged in as ADMINISTRATOR
+            header('refresh:1; ../../index.php');
+            echo("Nie ste administrátor!");
+            exit();
+        }
+    }
+
 ?>
