@@ -9,9 +9,9 @@ setInterval(function () {
 
 window.addEventListener('load', function(){
     $.ajax({
-        url:'all_tickets_data.php',
+        url:'my_tickets_data.php',
         success: function(response){
             $('#table_to_refresh').html(response);
         }
     });
-}); 
+});  
