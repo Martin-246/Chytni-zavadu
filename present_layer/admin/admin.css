@@ -16,4 +16,23 @@ nav{
 nav > h3 > a {padding: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;}
 nav > h3 > a:hover {background-color: #848482;color: #FFFFFFFF}
 
-
+body{
+    font-family: Arial, Helvetica;
+    margin:0%;
+    font-size: 1rem;
+    min-width: 800px;
+    width:90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+nav{
+    width:100%;
+    display:flex;
+}
+h2 {text-align: center;}
+.back{flex-grow: 1;text-align:left}
+table{border-collapse: collapse;width: 100%;}
+th {border: 1px solid #000000;}
+td {border-bottom: 1px solid #000000;text-align: center; height: 40px;}
+td > button {padding: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;font-weight: bold;}
+td > button:hover {background-color: #ff0000;color: #FFFFFFFF;}
