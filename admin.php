@@ -19,6 +19,10 @@
                 <button>Pridať správcu mesta</button>
         </form>
 
+        <form action="./present_layer/admin/user_list.php" class="inline">
+                <button>Spravovať užívateľov</button>
+        </form>
+
         <form action="./present_layer/authentication/logout.php" class="inline">
                 <button>Odhlásiť</button>
         </form>
