@@ -4,12 +4,7 @@ include_once("./data_layer/db_tickets.php");
 include_once("./data_layer/db_request.php");
 include_once("./bussiness_layer/get_ticket.php");
 
-// $html = $html . "<td>". $ticket[6] ."</td>"."\n"; //time_created
-// $html = $html . "<td>". $ticket[7] ."</td>"."\n"; //time_modified
-// $html = $html . '<td><img src="'. $ticket[8] .'" alt="Chyba" </td>'."\n"; //photo
-
 function request_ticket_rows(){
-    $id;
     $html = "";
     $counter = 0;
     
@@ -119,7 +114,7 @@ function request_ticket_rows(){
                 <th colspan='4' class='inhdr'>Service</th>
             </tr>
             <tr class='intr'>
-                <form id='form$counter' method='post' action='../bussiness_layer/worker_0_1.php' enctype='multipart/form-data'>
+                <form id='form$counter' method='post' action='' enctype='multipart/form-data'>
                 <td class='indescr' colspan='1'>Expected date</td>
                 <td colspan='1'><input type='date' id='expected_date' name='expected_date'></td>
                 <td class='indescr' colspan='1'>Price</td>
@@ -130,7 +125,7 @@ function request_ticket_rows(){
                 <td colspan='3'><input type='text' id='comment' name='comment'></td>
             </tr>
             <tr>
-                <td colspan='4'><input type = 'submit' name = 'contains_request_id' value='Send_".$row_request['id']."'></td>
+                <td colspan='4'><input type = 'submit' onclick='clicked_0_1(event,$counter)' name = 'contains_request_id_0_1' value='Send_".$row_request['id']."'></td>
             </form>
             </tr>
             </table>
@@ -165,8 +160,8 @@ function request_ticket_rows(){
                 <td colspan='3' style='text-align:left; padding-left:1%;'>".$row_request['comment_from_worker']."</td>
             </tr>
             <tr>
-            <form id='form$counter' method='post' action='../bussiness_layer/worker_1_2.php' enctype='multipart/form-data'>
-                <td colspan='4'><input type = 'submit' name = 'contains_request_id' value='FINISH REQUEST_".$row_request['id']."'></td>
+            <form id='form$counter' method='post' action='' enctype='multipart/form-data'>
+                <td colspan='4'><input type='submit' onclick='clicked(event)' name='contains_request_id_1_2' value='FINISH REQUEST_".$row_request['id']."'></td>
             </form>
             </tr>
             </table>

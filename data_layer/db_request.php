@@ -27,9 +27,9 @@ function state_update_1_2($request_id){
     return $db->query("UPDATE SERVICE_REQUEST SET state=2, date_fixed=CURDATE() WHERE id=".$request_id.";");
 }
 
-// function aaa(){
+// function aaa($request_id){
 //     $db = get_pdo();
-//     return $db->query("INSERT INTO SERVICE_REQUEST (worker_id,for_ticket,description_from_manager, state) VALUES (17,15,\"Cleaning after building construction.\", 0);");
+//     return $db->query("UPDATE SERVICE_REQUEST SET state=1 WHERE id=".$request_id.";");
 // }
 
 ?>
