@@ -1,6 +1,7 @@
 <?php 
 chdir('..'); // ---> root
 include_once("./bussiness_layer/checks.php");
+//include_once("./bussiness_layer/remove_ticket.php");
 session_start();
 is_logged();
 function print_user_from_email($email){ 
@@ -13,6 +14,8 @@ function print_user_from_email($email){
     <link rel="stylesheet" type="text/css" href="./my_tickets.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="module" src="./my_tickets.js"></script>
+    <script type="text/javascript" src="../bussiness_layer/remove_ticket.js"></script>
+    <title>Moje tikety</title>
     </head>
     <body>
        <nav>

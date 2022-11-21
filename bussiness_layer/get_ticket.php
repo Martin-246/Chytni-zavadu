@@ -68,8 +68,10 @@ function my_ticket_rows(){
             }else if($i == 8){
                 $html = $html . '<td><img src="'. $my_ticket[$i] .'" alt="Chyba" </td>'."\n";
             }else if($i == count($my_ticket)){
+                if ($my_ticket[4] == 'Zaevidovaný'){
+                    $html = $html . '<td><button onclick="handle_remove_button('. $my_ticket[0] .')">Vymazať</button></td>'."\n";
+                }
                 
-                $html = $html . '<td><a href = "../bussiness_layer/remove_ticket.php">Vymazat</a></td>'."\n";
             }else {
                 $html = $html . "<td>". $my_ticket[$i] ."</td>"."\n";
             }
