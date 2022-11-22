@@ -40,6 +40,21 @@ function select_output($mode)
     <link rel="stylesheet" type="text/css" href="./manager_tickets.css" />
 
     <script type="text/javascript">
+    function Expand($row_num)
+    {
+         var elem = document.getElementsByClassName("RowNested" + $row_num);
+
+         for(var i = 0; i < elem.length; i++)
+         {
+            var hide = elem[i].style.display =="none";
+            if (hide) {
+                elem[i].style.display="table-row";
+            } 
+            else {
+            elem[i].style.display="none";
+            }
+        }
+    }
     </script>   
     </head>
     
@@ -52,7 +67,7 @@ function select_output($mode)
 
         <!-- all output TODO -->
         <form method="GET" action="">
-        <select name="filter" onchange="this.form.submit()">
+        <select style='width:12%; float:right; margin-bottom: 16px;' name="filter" onchange="this.form.submit()">
             <?php 
             if(isset($_GET['filter']))
                 select_output($_GET['filter']);

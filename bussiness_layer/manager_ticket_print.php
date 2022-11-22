@@ -32,8 +32,50 @@ function ticket_rows($state)
         $html = $html . "<td>". $ticket[6] ."</td>"."\n"; //time_created
         //time_modified
         $html = $html . '<td><img src="'. $ticket[8] .'" alt="Chyba" </td>'."\n"; //photo
-        $html = $html . '<td><button>Service</button></td>'."\n";
+        $html = $html . "<td><a id=\"Link\" onclick=\"Expand($counter);\" href=\"#\">Service</a></td>"."\n";
         $html = $html . "</tr>\n";
+        $html = $html . 
+        "
+        <tr class=\"RowNested$counter\" style=\"display:none\">
+        <td colspan='8'>
+        <table class='nested'>
+        <colgroup>
+        <col width='7%'>
+        <col width='17%'>
+        <col width='7%'>
+        <col width='60.85%'>
+        <col width='8.15%'>
+        </colgroup>
+        <tr>
+            <th colspan='5'>Service</th>
+        </tr>
+        <tr>
+        <form id='form$counter' method='post' action='' enctype='multipart/form-data'>
+            <td colspan='1'>Worker</td>
+            <td colspan='1'>
+            <select name='worker'>
+            <optgroup label = 'Janitors'>
+            <option value=0>Walter White</option>
+            <option value=1>Gustavo Fring</option>
+            </optrgroup>
+            <optgroup label = 'Metalworking Brno-jih division'>
+            <option value=0>Karel Kralovec</option>
+            <option value=1>Leonardo Heisenberg</option>
+            </optgroup>
+            <option value=2>Yuri Khovanskiy</option>
+            </select>
+            </td>
+            <td colspan='1'>Task</td>
+            <td colspan='1'><input type='text' id='task' name='task'></td>
+            <td colspan='1'><input style='width:60%;;' type='submit' name='contains_ticket_id' value='Send_$ticket[0]'></td>
+        </form>
+        </tr>
+        </table>
+        </td>
+        </tr>
+        ";
+
+    $counter++;
     }
 
     return $html;
