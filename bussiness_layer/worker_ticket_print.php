@@ -4,7 +4,8 @@ include_once("./data_layer/db_tickets.php");
 include_once("./data_layer/db_request.php");
 include_once("./bussiness_layer/get_ticket.php");
 
-function request_ticket_rows($state){
+function request_ticket_rows($state)
+{
     $html = "";
     $counter = 0;
     

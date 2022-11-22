@@ -1,8 +1,9 @@
 <?php 
 chdir('..'); // ---> root
-include_once('./bussiness_layer/checks.php');
-include_once("./bussiness_layer/worker_ticket_print.php");
 include_once("./data_layer/db_request.php");
+include_once('./bussiness_layer/checks.php');
+include_once("./bussiness_layer/worker_ticket_print.php"); //*worker_request_print
+//include ./business_layer/state_change.php <--- get_reqID_by_submitVALUE(), worker_0_1(), worker_1_2()
 
 session_start();
 if(! is_worker() )
@@ -113,7 +114,7 @@ function select_output($mode)
             }
         }
     }
-     </script>   
+    </script>   
     </head>
     
     <body>
@@ -123,8 +124,7 @@ function select_output($mode)
             <h2 class="user">Prihlásený ako:<br><?php echo print_user_from_email($_SESSION["email"]); ?></h2>
         </nav> 
 
-        
-        
+        <!-- all output TODO -->
         <form method="GET" action="">
         <select name="filter" onchange="this.form.submit()">
             <?php 

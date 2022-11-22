@@ -15,7 +15,7 @@ if(! is_manager() )
 
 <?php echo("Logged in as: ".$_SESSION['email']); ?>
 
-    <form action="" class="inline">
+    <form action="present_layer/manager_tickets.php" class="inline">
         <button>All tickets</button>
     </form>
 

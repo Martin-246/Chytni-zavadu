@@ -24,6 +24,11 @@ function get_all_tickets(){
     return $db->query("SELECT * FROM TICKET");
 }
 
+function get_tickets_by_state($state){
+    $db = get_pdo();
+    return $db->query("SELECT * FROM TICKET WHERE state_from_manager=".$state.";");
+}
+
 function upload_new_ticket($category,$lng,$lat,$file,$author){
     $db = get_pdo();
     $user = get_user_by_email($author);
