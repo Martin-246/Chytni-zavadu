@@ -2,9 +2,9 @@
 include_once("db_setup.php");
 include_once("db_user.php");
 
-function get_my_requests($id){
+function get_my_requests($id, $state){
     $db = get_pdo();
-    return $db->query("SELECT * FROM SERVICE_REQUEST WHERE worker_id=".$id.";");
+    return $db->query("SELECT * FROM SERVICE_REQUEST WHERE worker_id=".$id." AND state=".$state.";");
 }
 
 function get_request_tickets($id){

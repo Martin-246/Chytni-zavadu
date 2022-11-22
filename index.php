@@ -12,10 +12,13 @@ if (session_id() == "")
 
 include_once("./bussiness_layer/checks.php");
 include_once("./bussiness_layer/admin/check_admin.php");
+
 if( is_admin() )
     header("Location: ./admin.php");
-
-
+if( is_manager() )
+    header("Location: ./manager.php");
+if( is_worker() )
+    header("Location: ./worker.php");
 ?>
 
 <html>
@@ -65,9 +68,6 @@ if( is_admin() )
     <?php
     if( is_logged_in()) // Allow logged in user to log out
     {
-        // If logged in user is a worker
-        worker_index();
-
         echo '
         <form action="present_layer/my_tickets.php" class="inline">
             <button>Moje tikety</button>

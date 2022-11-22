@@ -7,7 +7,7 @@ function is_logged(){
         return 1;
     }else{
         echo "Na túto akciu musíš byť prihlasený! Redirecting to index....";
-        header("refresh:3; ../bussiness_layer/redirect.php");
+        header("refresh:2; ../index.php");
         exit();
     }
 }
@@ -17,32 +17,27 @@ function is_logged_in()
     return isset($_SESSION['email']);
 }
 
-function is_logged_worker()
+function is_worker()
 {
-    if (is_logged_in()){
+    if (is_logged_in())
+    {
         $role = get_user_by_email($_SESSION["email"])["role"];
-        if(!strncmp($role, '1', 1)) // int role?
-        {
-            return 1;
-        }
-    }else{
-        //$pwd = (dir(getcwd()))->path;
-        echo "Na túto akciu musíš mať rolu údržbára! Redirecting to index....";
-        header("refresh:3; ../bussiness_layer/redirect.php");
-        exit();
+        if($role == WORKER)
+            return true;
     }
+    return false;
 }
 
-function worker_index()
-{   
-include_once("./data_layer/db_user.php");
-    if(is_logged_in()){
+function is_manager()
+{
+    if (is_logged_in())
+    {
         $role = get_user_by_email($_SESSION["email"])["role"];
-        if(!strncmp($role, WORKER, 1)) // int role?
-        {
-            header("Location: ./worker.php");
-        }
+        if($role == MANAGER)
+            return true;
     }
+    return false;
 }
 
+//$pwd = (dir(getcwd()))->path;
 ?>

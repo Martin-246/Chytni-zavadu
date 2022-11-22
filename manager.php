@@ -6,7 +6,7 @@ form {text-align: center;}
 <?php
 include_once("./bussiness_layer/checks.php");
 session_start();
-if(! is_worker() )
+if(! is_manager() )
     header('Location: ./index.php');
 ?>
 
@@ -15,8 +15,14 @@ if(! is_worker() )
 
 <?php echo("Logged in as: ".$_SESSION['email']); ?>
 
-<form action="present_layer/worker_requests.php" class="inline">
-        <button>Service requests</button>
+    <form action="" class="inline">
+        <button>All tickets</button>
+    </form>
+
+    <br>
+
+    <form action="" class="inline">
+        <button>Requests of service</button>
     </form>
 
     <br>

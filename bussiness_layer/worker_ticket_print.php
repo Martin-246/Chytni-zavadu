@@ -4,7 +4,7 @@ include_once("./data_layer/db_tickets.php");
 include_once("./data_layer/db_request.php");
 include_once("./bussiness_layer/get_ticket.php");
 
-function request_ticket_rows(){
+function request_ticket_rows($state){
     $html = "";
     $counter = 0;
     
@@ -15,29 +15,12 @@ function request_ticket_rows(){
         exit();
     }
     
-    $requests_table = get_my_requests($id); //get_requests -> get_ticket_by_request
+    $requests_table = get_my_requests($id, $state);
     
     while($row_request = $requests_table->fetch())
     {
         $row_ticket = (get_ticket($row_request['for_ticket']))->fetch();
         $ticket = get_ticket_data($row_ticket);
-
-        //TICKET
-        // $html = $html . "<td>". $ticket[1] ."</td>"."\n"; //category + 
-        // $html = $html . "<td>". $ticket[2]." : ". $ticket[3] ."</td>\n"; // lng:lat +
-        // $html = $html . "<td>". $ticket[6] ."</td>"."\n"; //time_created -+
-        // $html = $html . "<td>". $ticket[7] ."</td>"."\n"; //time_modified -+
-        // $html = $html . '<td><img src="'. $ticket[8] .'" alt="Chyba" </td>'."\n"; //photo +
-
-        //REQUEST
-        // $row_request['id'] +
-        // $row_request['for_ticket'] +
-        // $row_request['state'] + 
-        // $row_request['expected_date'] +
-        // $row_request['price'] +
-        // $row_request['date_fixed'] + 
-        // $row_request['comment_from_worker'] +
-        // $row_request['description_from_manager'] +
 
         if($row_request['state'] == 0)
             $html = $html . "<tr style='background-color: #e64747;'>\n";
