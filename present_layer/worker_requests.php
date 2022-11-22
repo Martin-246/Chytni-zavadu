@@ -5,7 +5,8 @@ include_once("./bussiness_layer/worker_ticket_print.php");
 include_once("./data_layer/db_request.php");
 
 session_start();
-is_logged_worker();
+if(! is_worker() )
+    header('Location: ../index.php');
 
 function print_user_from_email($email){ 
     $pos = strpos($email,"@",0);
@@ -45,6 +46,28 @@ if (isset($_POST['contains_request_id_0_1'])) // Expected_date & Price sending (
 else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 state).
 {
     worker_1_2();
+}
+
+function select_output($mode)
+{
+    if($mode == 0) {
+        echo "
+        <option selected='selected' value=0>0000000</option>
+        <option value=1>1111111</option>
+        <option value=2>2222222</option>";
+    }
+    else if($mode == 1) {
+        echo "
+        <option value=0>0000000</option>
+        <option selected='selected' value=1>1111111</option>
+        <option value=2>2222222</option>";
+    }
+    else if($mode == 2) {
+        echo "
+        <option value=0>0000000</option>
+        <option value=1>1111111</option>
+        <option selected='selected' value=2>2222222</option>";
+    }
 }
 ?>
 
@@ -99,7 +122,19 @@ else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 
             <h2 class="main">My requests</h2>
             <h2 class="user">Prihlásený ako:<br><?php echo print_user_from_email($_SESSION["email"]); ?></h2>
         </nav> 
-        <div id="table_to_refresh">
+
+        
+        
+        <form method="GET" action="">
+        <select name="filter" onchange="this.form.submit()">
+            <?php 
+            if(isset($_GET['filter']))
+                select_output($_GET['filter']);
+            else
+                select_output(0);
+            ?>
+        </select>
+        </form>
 
         <table>
             <tr>
@@ -110,9 +145,13 @@ else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 
                 <th>State</th>
                 <th style='border:0px; width:65px'></th>
             </tr>
-        <?php echo request_ticket_rows(); ?>
+            <?php 
+            if(isset($_GET['filter']))
+                echo request_ticket_rows($_GET['filter']);
+            else
+                echo request_ticket_rows(0);
+            ?>
         </table>
         
-        </div>
     </body>
 </html>
