@@ -42,8 +42,9 @@ function get_my_tickets($id){
 
 function remove_ticket($id){
     $db = get_pdo();
-    $img_path = $db->query("SELECT photo FROM TICKET WHERE id='".$id."';");
-    if ($img_path->fetch()["photo"] != "../img/placeholder-image.png"){
+    $stmt = $db->query("SELECT photo FROM TICKET WHERE id='".$id."';");
+    $img_path = $stmt->fetch()["photo"];
+    if ($img_path != "../img/placeholder-image.png"){
         unlink($img_path);
     }
     $db->query("DELETE FROM TICKET WHERE id='".$id."';");
