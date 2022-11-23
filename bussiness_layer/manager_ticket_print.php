@@ -4,6 +4,10 @@ include_once("./data_layer/db_tickets.php");
 include_once("./data_layer/db_request.php");
 include_once("./bussiness_layer/get_ticket.php");
 
+/***
+ * Getting 2D array of workers with their attributes
+ * @return 2D array
+ */
 function get_workers_array() {
     $table = get_users_by_role(3);
     $i = 0;
@@ -12,17 +16,19 @@ function get_workers_array() {
         $workers[$i][0] = $row['id'];
         $workers[$i][1] = $row['first_name'];
         $workers[$i][2] = $row['last_name'];
-        //$workers[$i][3] = function; ?
         $i++;
     }
     return $workers;
 }
+/***
+ * Genereting the select of workers object from $array 
+ * @return html code
+ */
 function worker_select_htmlgenerator($array) {
     $html = "";
     $html = $html . "
     <select id='worker' name='worker'>
     <option hidden disabled selected value></option>
-    <optgroup label = 'Janitors (not in db)'>
     ";
 
     for ($i = 0; $i < sizeof($array); $i++) 
@@ -31,17 +37,16 @@ function worker_select_htmlgenerator($array) {
     }
 
     $html = $html . "
-    </optrgroup>
-    <optgroup label = 'Metalworking Example division'>
-    <option value=0>Example Examplovec</option>
-    <option value=1>Examplo Exampleberg</option>
-    </optgroup>
     </select>
     ";
 
     return $html;
 }
 
+/***
+ * Outputing ticket items depending on $state filter
+ * @return html code
+ */
 function ticket_rows($state)
 {
     $html = "";

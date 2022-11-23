@@ -2,24 +2,24 @@
 chdir('..'); // ---> root
 include_once('./bussiness_layer/checks.php');
 include_once("./bussiness_layer/manager_ticket_print.php");
+include_once("./bussiness_layer/state_change.php");
 
 session_start();
 if(! is_manager() )
     header('Location: ../index.php');
 
+/***
+ * Parsing $email string and extracting first part
+ * @return username
+ */
 function print_user_from_email($email){ 
     $pos = strpos($email,"@",0);
     return substr($email,0,$pos);
 }
 
-function get_ID_by_submitVALUE($submit_value)
-{
-    $pos = strpos($submit_value,"_",0);
-    $id_char = substr($submit_value,$pos+1,strlen($submit_value));
-
-    return intval($id_char);
-}
-
+/***
+ * Outputing select options depending on filter $mode
+ */
 function select_output($mode)
 {
     if($mode == 0) {
@@ -52,6 +52,7 @@ if (isset($_POST['contains_ticket_id']))
     $task = $_POST['task'];
     insert_request($worker_id, $ticket_id, $task);
 }
+
 ?>
 
 <html>
@@ -61,6 +62,9 @@ if (isset($_POST['contains_ticket_id']))
     <script type="text/javascript">
     var RowNested_last_num = null;
 
+    /***
+     * Expending a block of the next data under an item $row_num
+     */
     function Expand($row_num)
     {
         var elem;
@@ -83,6 +87,9 @@ if (isset($_POST['contains_ticket_id']))
             elem[0].style.display="none";
     }
 
+    /***
+     * Popping up of confirmation window, cancels in case 'No' choice
+     */
     function clicked(event)
     {
         if(!confirm('Confirm the action.')){
@@ -92,6 +99,9 @@ if (isset($_POST['contains_ticket_id']))
         else
             return true;
     }
+    /***
+     * Popping up alert window if all fields aren't filled in the form $counter
+     */
     function clicked_form(event, $counter)
     {
         if(clicked(event))

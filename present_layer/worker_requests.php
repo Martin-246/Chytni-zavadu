@@ -3,52 +3,24 @@ chdir('..'); // ---> root
 include_once("./data_layer/db_request.php");
 include_once('./bussiness_layer/checks.php');
 include_once("./bussiness_layer/worker_ticket_print.php"); //*worker_request_print
-//include ./business_layer/state_change.php <--- get_reqID_by_submitVALUE(), worker_0_1(), worker_1_2()
+include_once("./bussiness_layer/state_change.php");
 
 session_start();
 if(! is_worker() )
     header('Location: ../index.php');
 
+/***
+ * Parsing email string and extracting first part
+ * @return username
+ */
 function print_user_from_email($email){ 
     $pos = strpos($email,"@",0);
     return substr($email,0,$pos);
 }
 
-function get_reqID_by_submitVALUE($submit_value)
-{
-    $pos = strpos($submit_value,"_",0);
-    $id_char = substr($submit_value,$pos+1,strlen($submit_value));
-
-    return intval($id_char);
-}
-
-function worker_0_1()
-{
-    $req_id = get_reqID_by_submitVALUE($_POST['contains_request_id_0_1']);
-
-    $sql_date = date('Y-m-d', strtotime($_POST['expected_date']));
-    $price = $_POST['price'];
-    $comment = $_POST['comment'];
-    
-    state_update_0_1($req_id, $sql_date, $price, $comment);
-}
-
-function worker_1_2()
-{
-    $req_id = get_reqID_by_submitVALUE($_POST['contains_request_id_1_2']);
-
-    state_update_1_2($req_id);
-}
-
-if (isset($_POST['contains_request_id_0_1'])) // Expected_date & Price sending (0 -> 1 state).
-{
-    worker_0_1();
-}
-else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 state).
-{
-    worker_1_2();
-}
-
+/***
+ * Outputing select options depending on filter $mode
+ */
 function select_output($mode)
 {
     if($mode == 0) {
@@ -70,6 +42,15 @@ function select_output($mode)
         <option selected='selected' value=2>2222222</option>";
     }
 }
+
+if (isset($_POST['contains_request_id_0_1'])) // Expected_date & Price sending (0 -> 1 state).
+{
+    worker_0_1();
+}
+else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 state).
+{
+    worker_1_2();
+}
 ?>
 
 <html>
@@ -77,22 +58,36 @@ function select_output($mode)
     <link rel="stylesheet" type="text/css" href="./worker_requests.css" />
 
     <script type="text/javascript">
+    var RowNested_last_num = null;
+
+    /***
+     * Expending a block of the next data under an item $row_num
+     */
     function Expand($row_num)
     {
-         var elem = document.getElementsByClassName("RowNested" + $row_num);
+        var elem;
 
-         for(var i = 0; i < elem.length; i++)
-         {
-            var hide = elem[i].style.display =="none";
-            if (hide) {
-                elem[i].style.display="table-row";
-            } 
-            else {
-            elem[i].style.display="none";
-            }
+        // Last hiding
+        if(RowNested_last_num != null && RowNested_last_num != $row_num )
+        {
+            elem = document.getElementsByClassName("RowNested" + RowNested_last_num);
+            if(elem[0].style.display == "table-row")
+                elem[0].style.display="none";
         }
+        
+        // Actual opening
+        RowNested_last_num = $row_num;
+        elem = document.getElementsByClassName("RowNested" + $row_num);
+
+        if (elem[0].style.display == "none")
+            elem[0].style.display="table-row";
+        else
+            elem[0].style.display="none";
     }
 
+    /***
+     * Popping up of confirmation window, cancels in case 'No' choice
+     */
     function clicked(event)
     {
         if(!confirm('Confirm the action.')){
@@ -102,6 +97,9 @@ function select_output($mode)
         else
             return true;
     }
+    /***
+     * Popping up of confirmation window, cancels in case 'No' choice. Then alert window if all fields aren't filled in the form $counter
+     */
     function clicked_0_1(event, $counter)
     {
         if(clicked(event))

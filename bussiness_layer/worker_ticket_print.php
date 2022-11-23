@@ -4,6 +4,10 @@ include_once("./data_layer/db_tickets.php");
 include_once("./data_layer/db_request.php");
 include_once("./bussiness_layer/get_ticket.php");
 
+/***
+ * Outputing request items depending on $state filter
+ * @return html code
+ */
 function request_ticket_rows($state)
 {
     $html = "";
