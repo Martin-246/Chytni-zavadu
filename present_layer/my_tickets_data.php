@@ -12,7 +12,6 @@ if(isset($_SESSION["email"])){
 echo "
 <table>
 <tr>
-    <th>ID</th>
     <th>Kategoria</th>
     <th>Pozicia</th>
     <th>Status</th>

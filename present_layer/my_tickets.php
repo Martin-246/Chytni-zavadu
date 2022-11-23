@@ -29,7 +29,6 @@ function print_user_from_email($email){
         <div id="table_to_refresh">
         <table >
             <tr>
-                <th>ID</th>
                 <th>Kategoria</th>
                 <th>Pozicia</th>
                 <th>Status</th>

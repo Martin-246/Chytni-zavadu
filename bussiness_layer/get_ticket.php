@@ -68,7 +68,7 @@ function my_ticket_rows(){
     while($row = $my_tickets->fetch()){
         $my_ticket = get_ticket_data($row);
         $html = $html . "\n<tr>\n";
-        for($i=0;$i<=count($my_ticket);$i++){
+        for($i=1;$i<=count($my_ticket);$i++){
             if($i==2){
                 $html = $html . "<td>". $my_ticket[$i]." : ". $my_ticket[$i+1] ."</td>\n";
                 $i++;
