@@ -40,20 +40,28 @@ function select_output($mode)
     <link rel="stylesheet" type="text/css" href="./manager_tickets.css" />
 
     <script type="text/javascript">
+    var RowNested_last_num = null;
+
     function Expand($row_num)
     {
-         var elem = document.getElementsByClassName("RowNested" + $row_num);
+        var elem;
 
-         for(var i = 0; i < elem.length; i++)
-         {
-            var hide = elem[i].style.display =="none";
-            if (hide) {
-                elem[i].style.display="table-row";
-            } 
-            else {
-            elem[i].style.display="none";
-            }
+        // Last hiding
+        if(RowNested_last_num != null && RowNested_last_num != $row_num )
+        {
+            elem = document.getElementsByClassName("RowNested" + RowNested_last_num);
+            if(elem[0].style.display == "table-row")
+                elem[0].style.display="none";
         }
+        
+        // Actual opening
+        RowNested_last_num = $row_num;
+        elem = document.getElementsByClassName("RowNested" + $row_num);
+
+        if (elem[0].style.display == "none")
+            elem[0].style.display="table-row";
+        else
+            elem[0].style.display="none";
     }
     </script>   
     </head>
