@@ -65,13 +65,8 @@ INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Admin","",
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Petra","Veduca","manager@fit.com","6ee4a469cd4e91053847f5d3fcb61dbcc91e8f0ef10be7748da4c4a1ba382d17",2);
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Stefan","Pracujuci","worker@fit.com","87eba76e7f3164534045ba922e7770fb58bbd14ad732bbf5ba6f11cc56989e6e",3);
 
-<<<<<<< HEAD
-INSERT INTO TICKET (category,submitted_by,photo,lng,lat,state_from_manager,time_created,time_modified,msg_from_manager) VALUES (1,1,'../img/trash0.jpg',16.596216,49.225684,2,'2022-11-21 12:44:46','2022-11-23 19:01:43','Dakujeme za nahlásenie. Odpadky boli upratané.');
-INSERT INTO TICKET (category,submitted_by,photo,lng,lat,state_from_manager,time_created,time_modified,msg_from_manager) VALUES (4,2,'../img/road0.jpg',16.605272,49.227512,1,'2022-11-22 15:42:46','2022-11-23 19:02:13','Technik obhliadol miesto. Práca na opravách zacne zajtra.');
-=======
 INSERT INTO TICKET (category,submitted_by,photo,lng,lat,state_from_manager,time_created,time_modified,msg_from_manager) VALUES (1,1,'../img/trash.jpeg',16.596216,49.225684,2,'2022-11-21 12:44:46','2022-11-23 19:01:43','Dakujeme za nahlásenie. Odpadky boli upratané.');
 INSERT INTO TICKET (category,submitted_by,photo,lng,lat,state_from_manager,time_created,time_modified,msg_from_manager) VALUES (4,2,'../img/road.jpg',16.605272,49.227512,1,'2022-11-22 15:42:46','2022-11-23 19:02:13','Technik obhliadol miesto. Práca na opravách zacne zajtra.');
->>>>>>> c8fb2ae (update script.sql)
 INSERT INTO TICKET (category,submitted_by,photo,lng,lat,state_from_manager,time_created,time_modified) VALUES (2,1,'../img/lamp.jpg',16.612346,49.231412,0,'2022-11-23 12:44:46','2022-11-23 19:03:27');
 
 INSERT INTO SERVICE_REQUEST (worker_id,for_ticket,description_from_manager,expected_date,state,date_fixed,comment_from_worker,price)
