@@ -28,7 +28,17 @@
 
             // button that removes the user. P.S. Admin cannot be removed
             if($row['role'] != ADMIN)
-                $html_row .= '<td> <button onclick="handle_remove_button('. $row['id'] .')"> Odstrániť </button> </td>' . "\n";
+            {
+                if(user_has_tickets($row['id']))
+                    // User has active tickets. Cannot remove
+                    $html_row .= '<td> Má aktívne tikety </td>'."\n";
+                else if(user_has_service_requests($row['id']))
+                    // User has active service requests. Cannot remove
+                    $html_row .= '<td> Má service requesty </td>'."\n";
+                else
+                    // Generate delete button
+                    $html_row .= '<td> <button onclick="handle_remove_button('. $row['id'] .')"> Odstrániť </button> </td>' . "\n";
+            }
             else
                 $html_row .= "<td> </td>\n";
 

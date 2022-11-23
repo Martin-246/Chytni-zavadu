@@ -43,13 +43,47 @@
         return $stmt;
     }
 
+    /***
+     * Try to remove user with given 'id'
+     */
     function remove_user($id)
     {
         $pdo = get_pdo();
 
-        $stmt = $pdo->prepare('DELETE FROM PERSON WHERE id = ?;');
+        try{    
+            $stmt = $pdo->prepare('DELETE FROM PERSON WHERE id = ?;');                
+            $stmt->execute([$id]);
+        }catch(Exception $e) {}
+    }
 
+    /***
+     * Determine if user with given 'id' has any submitted tickets
+     */
+    function user_has_tickets($id)
+    {
+        $pdo = get_pdo();
+
+        $stmt = $pdo->prepare('SELECT * FROM TICKET WHERE submitted_by = ?;');
         $stmt->execute([$id]);
+
+        if($stmt->fetch())
+            return true;
+        return false;
+    }
+
+    /***
+     * Determine if user with given 'id' has any active service requests
+     */
+    function user_has_service_requests($id)
+    {
+        $pdo = get_pdo();
+
+        $stmt = $pdo->prepare('SELECT * FROM SERVICE_REQUEST WHERE worker_id = ?;');
+        $stmt->execute([$id]);
+
+        if($stmt->fetch())
+            return true;
+        return false;
     }
 
 
