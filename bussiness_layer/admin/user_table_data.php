@@ -1,12 +1,13 @@
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     include_once('./data_layer/db_user.php');
     include_once('./bussiness_layer/constants.php');
 
-    function foo($id)
-    {
-        echo "-> ".$id."\n";
-    }
-
+    /***
+     * Return HTML of table containing all users
+     */
     function get_user_table_rows()
     {
         global $roles;

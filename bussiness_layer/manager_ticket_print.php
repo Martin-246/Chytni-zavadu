@@ -4,6 +4,44 @@ include_once("./data_layer/db_tickets.php");
 include_once("./data_layer/db_request.php");
 include_once("./bussiness_layer/get_ticket.php");
 
+function get_workers_array() {
+    $table = get_users_by_role(3);
+    $i = 0;
+    while($row = $table->fetch())
+    {
+        $workers[$i][0] = $row['id'];
+        $workers[$i][1] = $row['first_name'];
+        $workers[$i][2] = $row['last_name'];
+        //$workers[$i][3] = function; ?
+        $i++;
+    }
+    return $workers;
+}
+function worker_select_htmlgenerator($array) {
+    $html = "";
+    $html = $html . "
+    <select id='worker' name='worker'>
+    <option hidden disabled selected value></option>
+    <optgroup label = 'Janitors (not in db)'>
+    ";
+
+    for ($i = 0; $i < sizeof($array); $i++) 
+    {
+        $html = $html . "<option value=".$array[$i][0].">".$array[$i][1]." ".$array[$i][2]."</option>";
+    }
+
+    $html = $html . "
+    </optrgroup>
+    <optgroup label = 'Metalworking Example division'>
+    <option value=0>Example Examplovec</option>
+    <option value=1>Examplo Exampleberg</option>
+    </optgroup>
+    </select>
+    ";
+
+    return $html;
+}
+
 function ticket_rows($state)
 {
     $html = "";
@@ -17,13 +55,14 @@ function ticket_rows($state)
     }
     
     $tickets_table = get_tickets_by_state($state);
-    
+
+    $workers = get_workers_array();
+    $worker_select_html = worker_select_htmlgenerator($workers);
+
     while($ticket_row = $tickets_table->fetch())
     {
         $ticket = get_ticket_data($ticket_row);
 
-        // if($ticket[4] == 'Zaevidovaný') // status = 0
-        //     $html = $html . "<tr style='background-color: #e64747;'>\n";
         $html = $html . "<td>". $ticket[0] ."</td>"."\n"; //id
         $html = $html . "<td>". $ticket[1] ."</td>"."\n"; //category
         $html = $html . "<td>". $ticket[2]." : ". $ticket[3] ."</td>\n"; // lng:lat
@@ -49,33 +88,49 @@ function ticket_rows($state)
         <tr>
             <th colspan='5'>Service</th>
         </tr>
-        <tr>
-        <form id='form$counter' method='post' action='' enctype='multipart/form-data'>
-            <td colspan='1'>Worker</td>
-            <td colspan='1'>
-            <select name='worker'>
-            <optgroup label = 'Janitors'>
-            <option value=0>Walter White</option>
-            <option value=1>Gustavo Fring</option>
-            </optrgroup>
-            <optgroup label = 'Metalworking Brno-jih division'>
-            <option value=0>Karel Kralovec</option>
-            <option value=1>Leonardo Heisenberg</option>
-            </optgroup>
-            <option value=2>Yuri Khovanskiy</option>
-            </select>
-            </td>
-            <td colspan='1'>Task</td>
-            <td colspan='1'><input type='text' id='task' name='task'></td>
-            <td colspan='1'><input style='width:60%;;' type='submit' name='contains_ticket_id' value='Send_$ticket[0]'></td>
-        </form>
-        </tr>
-        </table>
-        </td>
-        </tr>
         ";
+        if($ticket[4] == "Zaevidovaný")
+        {
+            $html = $html .
+            "
+            <tr>
+            <form id='form$counter' method='post' action='' enctype='multipart/form-data'>
+                <td colspan='1'>Worker</td>
+                <td colspan='1'>
+                $worker_select_html
+                </td>
+                <td colspan='1'>Task</td>
+                <td colspan='1'><input type='text' id='task' name='task'></td>
+                <td colspan='1'><input style='width:60%;' type='submit' onclick='clicked_form(event,$counter)' name='contains_ticket_id' value='Send_$ticket[0]'></td>
+            </form>
+            </tr>
 
-    $counter++;
+            </table>
+            </td>
+            </tr>
+            ";
+        }
+        else
+        {
+            $row_request = get_request_by_ticket($ticket[0]);
+            $html = $html .
+            "
+            <tr>
+            <form id='form$counter' method='post' action='' enctype='multipart/form-data'>
+                <td colspan='1'>Worker</td>
+                <td colspan='1'>".$row_request['worker_id']."</td>
+                <td colspan='1'>Task</td>
+                <td colspan='1'>".$row_request['description_from_manager']."</td>
+            </form>
+            </tr>
+    
+            </table>
+            </td>
+            </tr>
+            ";
+        }
+
+        $counter++;
     }
 
     return $html;

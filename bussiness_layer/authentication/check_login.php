@@ -1,4 +1,7 @@
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     include('./data_layer/db_user.php');
     include_once('./bussiness_layer/authentication/check_register.php');
     if (session_id() == "")

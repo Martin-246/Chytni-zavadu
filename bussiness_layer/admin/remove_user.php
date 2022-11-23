@@ -1,10 +1,11 @@
 <?php
     /***
      * This file is called using AJAX in order to delete a user
+     * @author xpavel39@stud.fit.vutbr.cz
      */
 
     chdir('../..'); // root
-    
+
     include_once('./bussiness_layer/admin/check_admin.php');
     enforce_admin();
 

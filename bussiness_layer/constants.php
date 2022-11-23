@@ -1,4 +1,7 @@
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     define('ADMIN',1);
     define('MANAGER',2);
     define('WORKER',3);

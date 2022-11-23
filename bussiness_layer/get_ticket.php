@@ -1,6 +1,6 @@
 <?php
-include_once("./data_layer/db_tickets.php"); // first dot was erased
-include_once("./data_layer/db_user.php"); // first dot was erased
+include_once("./data_layer/db_tickets.php");
+include_once("./data_layer/db_user.php");
 include_once("./bussiness_layer/constants.php");
 /*Function which check and parse database row to array
 Takes: fetched row of ticket from databes

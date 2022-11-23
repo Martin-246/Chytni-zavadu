@@ -1,4 +1,7 @@
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     chdir('../..'); // root
 	include_once './bussiness_layer/authentication/check_register.php';
 	$res = check_registration();
@@ -49,6 +52,7 @@
 </html>
 
 <?php
+	// Print error message or redirect
 		switch($res)
 		{
 			case 0:

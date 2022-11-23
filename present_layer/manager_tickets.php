@@ -12,6 +12,14 @@ function print_user_from_email($email){
     return substr($email,0,$pos);
 }
 
+function get_ID_by_submitVALUE($submit_value)
+{
+    $pos = strpos($submit_value,"_",0);
+    $id_char = substr($submit_value,$pos+1,strlen($submit_value));
+
+    return intval($id_char);
+}
+
 function select_output($mode)
 {
     if($mode == 0) {
@@ -32,6 +40,17 @@ function select_output($mode)
         <option value=1>1111111</option>
         <option selected='selected' value=2>2222222</option>";
     }
+}
+
+if (isset($_POST['contains_ticket_id']))
+{
+    $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id']);
+
+    //update_state_ticket($ticket_id, 1);
+
+    $worker_id = $_POST['worker'];
+    $task = $_POST['task'];
+    insert_request($worker_id, $ticket_id, $task);
 }
 ?>
 
@@ -62,6 +81,28 @@ function select_output($mode)
             elem[0].style.display="table-row";
         else
             elem[0].style.display="none";
+    }
+
+    function clicked(event)
+    {
+        if(!confirm('Confirm the action.')){
+            event.preventDefault();
+            return false;
+        }
+        else
+            return true;
+    }
+    function clicked_form(event, $counter)
+    {
+        if(clicked(event))
+        {
+            var elem1 = document.forms["form"+$counter]["task"].value;
+            var elem2 = document.forms["form"+$counter]["worker"].value;
+            if (elem1 == "" || elem2 == "") {
+                alert("Fill in all the fields!");
+                event.preventDefault();
+            }
+        }
     }
     </script>   
     </head>

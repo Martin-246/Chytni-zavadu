@@ -44,6 +44,19 @@
     }
 
     /***
+     * Get PERSON table with $role_num role
+     * @return PDOStatement object
+     */
+    function get_users_by_role($role_num)
+    {
+        $pdo = get_pdo();
+
+        $stmt = $pdo->query("SELECT id,first_name,last_name,email,phone,role FROM PERSON WHERE role = $role_num;");
+ 
+        return $stmt;
+    }
+
+    /***
      * Try to remove user with given 'id'
      */
     function remove_user($id)
