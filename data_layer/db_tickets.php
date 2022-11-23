@@ -49,4 +49,9 @@ function remove_ticket($id){
     }
     $db->query("DELETE FROM TICKET WHERE id='".$id."';");
 }
+
+function update_state_ticket($id, $state){
+    $db = get_pdo();
+    return $db->query("UPDATE TICKET SET state_from_manager=$state WHERE id=".$id.";");
+}
 ?>

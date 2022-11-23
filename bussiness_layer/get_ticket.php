@@ -1,6 +1,6 @@
 <?php
-include_once("./data_layer/db_tickets.php"); // first dot was erased
-include_once("./data_layer/db_user.php"); // first dot was erased
+include_once("./data_layer/db_tickets.php");
+include_once("./data_layer/db_user.php");
 include_once("./bussiness_layer/constants.php");
 function get_ticket_data($row){
     global $description_state;
