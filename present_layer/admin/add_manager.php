@@ -1,4 +1,7 @@
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     chdir('../..'); // ---> root
     include_once('./bussiness_layer/admin/check_admin.php');
     enforce_admin();
@@ -54,6 +57,7 @@
 </html>
 
 <?php
+	// Print error message or redirect
 		switch($res)
 		{
 			case 0:

@@ -9,6 +9,9 @@
     if (session_id() == "")
         session_start();
 
+    /***
+     * Determine if logged in user has administrator rights
+     */
     function is_admin()
     {
         if(isset($_SESSION['email']))
@@ -21,11 +24,18 @@
         return false;
     }
 
+    /***
+     * Check if data submitted by form to register new manager are correct.
+     * If they are, also add the manager to database
+     */
     function check_add_manager()
     {
         return check_registration(MANAGER,false);
     }
 
+    /***
+     * Check that the logged user is admin. If it isn't redirect to 'index.php'.
+     */
     function enforce_admin()
     {
         if (session_id() == "")

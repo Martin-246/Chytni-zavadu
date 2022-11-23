@@ -1,4 +1,7 @@
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     chdir('../..'); // root
 
     include_once('./bussiness_layer/admin/check_admin.php');
@@ -10,6 +13,7 @@
     if(session_id() == "")
         session_start();
 
+    // Print table of users
     echo "
     <tr>
         <th>ID</th>
@@ -22,5 +26,6 @@
     </tr>
     ";
 
+    // Print table content
     echo get_user_table_rows();
 ?>

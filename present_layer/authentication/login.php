@@ -1,5 +1,8 @@
 
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     chdir('../..'); // root
     include './bussiness_layer/authentication/check_login.php';
     $res = check_login();

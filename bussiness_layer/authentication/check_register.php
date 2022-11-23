@@ -1,4 +1,7 @@
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     if (session_id() == "")
         session_start();
     include_once('./data_layer/db_user.php');
@@ -60,17 +63,25 @@
         return 0;
     }
 
-
+    /***
+     * Check if $email is in the format of an email adress.
+     */
     function email_ok($email)
     { 
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
+    /***
+     * Determine if the registration form has been submitted yet
+     */
     function registration_submitted()
     {
         return (isset($_POST['f_name']) || isset($_POST['l_name']) ||  isset($_POST['email']) || isset($_POST['password']) || isset($_POST['phone']) );
     }
 
+    /***
+     * Unset all data filled in froms from session
+     */
     function unset_filled_data()
     {
         unset($_SESSION['filled_email']);

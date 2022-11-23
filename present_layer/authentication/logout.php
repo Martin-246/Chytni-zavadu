@@ -1,4 +1,8 @@
 <?php
+/***
+ * Logout the current user
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     if (session_id() == "")
         session_start();
     session_destroy();

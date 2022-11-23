@@ -1,4 +1,8 @@
 <?php
+/***
+ * Main screen for admin
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     chdir('.');
     include('./bussiness_layer/admin/check_admin.php');
 
