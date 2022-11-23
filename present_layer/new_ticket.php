@@ -1,8 +1,7 @@
 <?php
+//Page for creating new tickets
 session_start();
 include_once('../bussiness_layer/print_categories.php');
-
-
 ?>
 <html>
     <head>
@@ -21,7 +20,9 @@ include_once('../bussiness_layer/print_categories.php');
             <h2 class="grow10">Nový tiket</h2>
         </nav>
         <h3>Vyber pozíciu na mape<h3>
+        <!--Creating map-->
         <div id="map"></div><script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJVGL83AulBYsKWzBA0ooSruG4_CVIWqA&callback=initMap"defer></script>
+        <!--Form for data of new ticket-->
         <form id="form" method="post" action="../bussiness_layer/create_ticket.php" enctype="multipart/form-data">
         <br><label for="category">Pozicia</label><br>
         <input type="text" id="lng" name="lng">

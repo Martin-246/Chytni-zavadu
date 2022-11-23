@@ -1,9 +1,12 @@
 <?php 
+//script which generate table for all tickets
 chdir('..'); // ---> root
 include_once("./bussiness_layer/checks.php");
-//include_once("./bussiness_layer/remove_ticket.php");
 session_start();
 is_logged();
+//function which prints email without domain.
+//Takes: string: whole email adress (user@user.com)
+//Returns: string: user part of email adress (user)
 function print_user_from_email($email){ 
     $pos = strpos($email,"@",0);
     return substr($email,0,$pos);
@@ -35,8 +38,7 @@ function print_user_from_email($email){
                 <th>Cas modifikacie</th>
                 <th>Fotka problemu</th>
                 <th>Akcia</th>
-            </tr>
-            
+            </tr>           
         </table>
         </div>
     </body>

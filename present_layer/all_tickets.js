@@ -1,3 +1,4 @@
+//refresh table in one second interval through ajax
 setInterval(function () {
     $.ajax({
         url:'all_tickets_data.php',
@@ -6,7 +7,7 @@ setInterval(function () {
         }
     });
 }, 1000);
-
+//when html is loaded, get table through ajax
 window.addEventListener('load', function(){
     $.ajax({
         url:'all_tickets_data.php',

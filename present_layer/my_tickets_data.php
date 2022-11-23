@@ -1,4 +1,5 @@
 <?php
+//script which generate table for my tickets
 chdir('..'); // ---> root
 include_once("./bussiness_layer/get_ticket.php");
 include_once("./data_layer/db_user.php");

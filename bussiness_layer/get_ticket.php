@@ -2,6 +2,9 @@
 include_once("./data_layer/db_tickets.php"); // first dot was erased
 include_once("./data_layer/db_user.php"); // first dot was erased
 include_once("./bussiness_layer/constants.php");
+/*Function which check and parse database row to array
+Takes: fetched row of ticket from databes
+Returns: array with ticket data*/
 function get_ticket_data($row){
     global $description_state;
     $ticket[0] = $row["id"];
@@ -27,7 +30,7 @@ function get_ticket_data($row){
     }
     return $ticket;
 }
-
+//Depracted function which have no longer any use. But i was scared to remove it cuz who knows...
 function print_all_tickets_table_row(){
     $tickets = get_all_tickets(); 
             while($row = $tickets->fetch()){
@@ -46,22 +49,25 @@ function print_all_tickets_table_row(){
                 echo "</tr>";
             }
 }
-
+//function which makes html table of tickets of logged user
+//Returns: string: html table
 function my_ticket_rows(){
     global $description_state;
     $id = "";
     $html = "";
+    //user must be logged in to perfom this action
     if(isset($_SESSION["email"])){
         $id =  get_user_by_email($_SESSION["email"])["id"];
     }else {
-        echo "fatal error";
+        echo "You have to be logged in to use 'My tickets' feature ...\nLOG: function: my_ticket_row";
         exit();
     }
+    //get database view
     $my_tickets = get_my_tickets($id);
+    //for every fetched row
     while($row = $my_tickets->fetch()){
         $my_ticket = get_ticket_data($row);
         $html = $html . "\n<tr>\n";
-        $_SESSION['ticket_to_remove'] = $my_ticket[0];
         for($i=0;$i<=count($my_ticket);$i++){
             if($i==2){
                 $html = $html . "<td>". $my_ticket[$i]." : ". $my_ticket[$i+1] ."</td>\n";
@@ -69,6 +75,7 @@ function my_ticket_rows(){
             }else if($i == 8){
                 $html = $html . '<td><img src="'. $my_ticket[$i] .'" alt="Chyba" </td>'."\n";
             }else if($i == count($my_ticket)){
+                //if state is 0 then user have ability to remove ticket
                 if ($my_ticket[4] == $description_state[0]){
                     $html = $html . '<td><button onclick="handle_remove_button('. $my_ticket[0] .')">Vymazať</button></td>'."\n";
                 }
@@ -82,7 +89,8 @@ function my_ticket_rows(){
     return $html;
 
 }
-
+//function which makes html table of all tickets
+//Returns: string: html table
 function all_ticket_rows(){
     $html = "";
     $my_tickets = get_all_tickets();
@@ -104,7 +112,8 @@ function all_ticket_rows(){
     return $html;
 
 }
-
+//Function that parse all tickets data from database to JSON format
+//Return: string: JSON format
 function all_tickets_map_json(){
     $json = "[";
     $tickets = get_all_tickets();

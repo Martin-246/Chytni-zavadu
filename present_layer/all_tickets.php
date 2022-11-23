@@ -1,4 +1,5 @@
-<?php 
+<?php
+//page where all tickets are shown
 chdir('..'); // ---> root
 include_once('./bussiness_layer/get_ticket.php');
 
