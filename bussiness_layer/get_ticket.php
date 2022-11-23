@@ -48,6 +48,7 @@ function print_all_tickets_table_row(){
 }
 
 function my_ticket_rows(){
+    global $description_state;
     $id = "";
     $html = "";
     if(isset($_SESSION["email"])){
@@ -68,7 +69,7 @@ function my_ticket_rows(){
             }else if($i == 8){
                 $html = $html . '<td><img src="'. $my_ticket[$i] .'" alt="Chyba" </td>'."\n";
             }else if($i == count($my_ticket)){
-                if ($my_ticket[4] == 'Zaevidovaný'){
+                if ($my_ticket[4] == $description_state[0]){
                     $html = $html . '<td><button onclick="handle_remove_button('. $my_ticket[0] .')">Vymazať</button></td>'."\n";
                 }
                 
