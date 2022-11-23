@@ -25,7 +25,6 @@ include_once('./bussiness_layer/get_ticket.php');
         <div id="table_to_refresh">
             <table>
                 <tr>
-                    <th>ID</th>
                     <th>Kategoria</th>
                     <th>Pozicia</th>
                     <th>Status</th>

@@ -6,7 +6,6 @@ include_once("./data_layer/db_user.php");
 echo "
 <table>
 <tr>
-    <th>ID</th>
     <th>Kategoria</th>
     <th>Pozicia</th>
     <th>Status</th>
