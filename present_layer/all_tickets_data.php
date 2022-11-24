@@ -7,7 +7,7 @@ echo "
 <table>
 <tr>
     <th>Kategoria</th>
-    <th>Pozicia</th>
+    <th class='pos'>Pozicia</th>
     <th>Status</th>
     <th>Sprava od manazera</th>
     <th>Cas vytvorenia</th>

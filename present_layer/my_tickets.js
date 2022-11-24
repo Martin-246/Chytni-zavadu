@@ -6,7 +6,7 @@ setInterval(function () {
             $('#table_to_refresh').html(response);
         }
     });
-}, 1000);
+}, 5000);
 //when html is loaded, get table through ajax
 window.addEventListener('load', function(){
     $.ajax({

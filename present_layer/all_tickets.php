@@ -8,6 +8,7 @@ include_once('./bussiness_layer/get_ticket.php');
     <title>Vsetky tikety</title>
     <link rel="stylesheet" type="text/css" href="./all_tickets.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../bussiness_layer/get_address.js"></script>
     <script type="module" src="./all_tickets.js"></script>
 </head>
 <html>
@@ -26,7 +27,7 @@ include_once('./bussiness_layer/get_ticket.php');
             <table>
                 <tr>
                     <th>Kategoria</th>
-                    <th>Pozicia</th>
+                    <th class='pos'>Pozicia</th>
                     <th>Status</th>
                     <th>Sprava od manazera</th>
                     <th>Cas vytvorenia</th>

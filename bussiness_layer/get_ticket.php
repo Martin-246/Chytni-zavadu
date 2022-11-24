@@ -38,7 +38,8 @@ function print_all_tickets_table_row(){
                 echo "<tr>";
                 for($i=0;$i<count($ticket);$i++){
                     if($i==2){
-                        echo "<td>". $ticket[$i]." : ". $ticket[$i+1] ."</td>";
+                        echo '<td id="address'.$ticket[0].'"><script type="text/javascript">get_address('.$ticket[0].','.$ticket[$i].','.$ticket[$i+1].');</script></td>';
+                        //echo "<td>". $ticket[$i]." : ". $ticket[$i+1] ."</td>";
                         $i++;
                     }else if($i == 8){
                         echo '<td><img src="'. $ticket[$i] .'" alt="Chyba" </td>';
@@ -70,7 +71,9 @@ function my_ticket_rows(){
         $html = $html . "\n<tr>\n";
         for($i=1;$i<=count($my_ticket);$i++){
             if($i==2){
-                $html = $html . "<td>". $my_ticket[$i]." : ". $my_ticket[$i+1] ."</td>\n";
+                //$html = $html . "<td>". $my_ticket[$i]." : ". $my_ticket[$i+1] ."</td>\n";
+                $html = $html . '<td id="address'.$my_ticket[0].'"><script type="text/javascript">get_address('.$my_ticket[0].','.$my_ticket[$i].','.$my_ticket[$i+1].');</script></td>';
+                //$html = $html . '<td class="address"'.$my_ticket[0].'><script src="https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyCJVGL83AulBYsKWzBA0ooSruG4_CVIWqA"></script></td>';
                 $i++;
             }else if($i == 8){
                 $html = $html . '<td><img src="'. $my_ticket[$i] .'" alt="Chyba" </td>'."\n";
@@ -101,7 +104,8 @@ function all_ticket_rows(){
         $html = $html . "\n<tr>\n";
         for($i=1;$i<count($my_ticket);$i++){
             if($i==2){
-                $html = $html . "<td>". $my_ticket[$i]." : ". $my_ticket[$i+1] ."</td>\n";
+                $html = $html . '<td id="address'.$my_ticket[0].'"><script type="text/javascript">get_address('.$my_ticket[0].','.$my_ticket[$i].','.$my_ticket[$i+1].');</script></td>';
+                //$html = $html . "<td>". $my_ticket[$i]." : ". $my_ticket[$i+1] ."</td>\n";
                 $i++;
             }else if($i == 8){
                 $html = $html . '<td><img src="'. $my_ticket[$i] .'" alt="Chyba" </td>'."\n";

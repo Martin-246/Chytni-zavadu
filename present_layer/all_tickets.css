@@ -17,3 +17,4 @@ li > h2 {padding-left: 300px;}
 table{border-collapse: collapse;width: 100%}
 th {border: 1px solid #000000;}
 td {border-bottom: 1px solid #000000;padding-left: 10px;padding-right: 10px;}
+.pos{min-width: 240px; width: 240px; max-width: 240px;}
