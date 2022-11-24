@@ -31,8 +31,8 @@ include_once('./bussiness_layer/print_categories.php');
         <!--Form for data of new ticket-->
         <form id="form" method="post" action="../bussiness_layer/create_ticket.php" enctype="multipart/form-data">
         <br><label for="category">Pozicia</label><br>
-        <input type="text" id="lng" name="lng" required>
-        <input type="text" id="lat" name="lat"  required><br>
+        <input type="text" id="lng" name="lng" onKeyDown="return false" readonly required>
+        <input type="text" id="lat" name="lat" onKeyDown="return false" readonly required><br>
         <br><label for="category">Kategoria</label><br>
         <select name="category">  <?php print_categories(); ?> </select><br>
         <br><label for="fileToUpload">Nahraj fotku (volitelne)</label><br>
