@@ -141,8 +141,8 @@ function ticket_rows($state)
         else if($req_state == 2)
             $html = $html . "<td style='background-color:#5cb935'>2</td>"."\n"; 
         $html = $html . "<td>". $ticket[5] ."</td>"."\n"; //message
-        $html = $html . "<td>". $ticket[7] ."</td>"."\n"; //time_modified
         $html = $html . "<td>". $ticket[6] ."</td>"."\n"; //time_created
+        $html = $html . "<td>". $ticket[7] ."</td>"."\n"; //time_modified
         $html = $html . '<td><img src="'. $ticket[8] .'" alt="Chyba" </td>'."\n"; //photo
         $html = $html . "<td><a id=\"Link\" onclick=\"Expand($counter);\" href=\"#\">Menu</a></td>"."\n";
         $html = $html . "</tr>\n";
