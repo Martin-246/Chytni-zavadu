@@ -29,7 +29,7 @@
 	</dd>
   <dd>Tverdokhlib Vladyslav <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
 	    <a href="mailto:xtverd01@stud.fit.vutbr.cz">xtverd01@stud.fit.vutbr.cz</a> - 
-		Inplementácia stránok pre správcu mesta a údržbára. Vytváranie service requestov a pridávanie komentárov.
+		Implementácia stránok pre správcu mesta a údržbára. Vytváranie service requestov a pridávanie komentárov.
 	</dd>
 	<dt>URL aplikace</dt>
 	<dd><a href="https://www.stud.fit.vutbr.cz/~xsikul15/IIS/">https://www.stud.fit.vutbr.cz/~xsikul15/IIS/</a></dd>
@@ -51,36 +51,51 @@
 
 
 <h2>Implementace</h2>
-<p>Projekt bol implementovaný v troch priečinkoch podľa vzoru aplikačnej vrstvy trojvrstvej architektúry. Databáza aj so vzorovým vyplnením je vytvorená podľa scriptu <i>script.sql</i>.
-Základom projektu je script <i>index.php</i>, ktorý ponúka rôzne možnosti. Registráciu nového užívateľa, zobraziť všetky nahlásené tikety, mapu všetkých tiketov a po našom rozhodnutí po prezeraní podobných aplikacii sme sa rozhodli pridať funkciu nahlasovania
-nových tiketov aj neregistrovaným užívateľom. Samozrejme v tejto hlavnej ponuke je možnosť prihlásenia (<i>./present_layer/authentication/*</i>). Podľa prihlasovacích údajov je nasledne návšetvník stránky prenesený na rozhranie buď užívateľa (<i>index.php</i>), správcu (<i>manager.php</i>), admina (<i>admin.php</i>) alebo servisného technika (<i>worker.php</i>).
-Podľa užívateľského rozhrania sa prihláseným otvárajú iné funkcie:
+<p>Projekt bol implementovaný v troch priečinkoch podľa vzoru aplikačnej vrstvy trojvrstvej architektúry. 
+	Databáza aj so vzorovým vyplnením je vytvorená podľa scriptu <i>script.sql</i>.
+Základom projektu je script <i>index.php</i>, ktorý ponúka rôzne možnosti. Prihlásenie alebo registrácia nového užívateľa. 
+Prihlásený užívateľ si môže zobraziť všetky nahlásené tikety, vlastné tikety, alebo aj mapu všetkých tiketov. 
+Podľa prihlasovacích údajov je nasledne návšetvník stránky prenesený na rozhranie buď obyčajného užívateľa 
+(<i>index.php</i>), správcu (<i>manager.php</i>), admina (<i>admin.php</i>) alebo servisného technika (<i>worker.php</i>).
+Podľa užívateľského rozhrania sa prihlásením otvárajú iné funkcie:
 <h3>Prezenčná vrstva</h3>
 <ul>
 	<li><b>Registrovaný užívateľ:</b></li>
 	<ul>
-		<li>Všetky tikety:</li>(<i>./present_layer/all_tickets.php</i>) Táto funkcia pridáva možnosť užívateľom zobraziť si všetky nahlásené tikety. Zobrazenie je vo forme tabuľky, ktorá zobrazuje relevantné informácie o tiketoch. Dáta tabuľky sú získané v intervaloch pre prípad
-		zmeny obsahu (<i>./present_layer/all_tickets.js</i>,<i>./present_layer/all_tickets_data.php</i>,). Štylizácia je vedená slovami: "v jednoduchosti je krása" (<i>./present_layer/all_tickets.cs</i>).
-		<li>Mapa:</li> Jedná sa o nadstavbu a vylepšenie zobrazovania všetkých tiketov (<i>./present_layer/all_tickets_map.php</i>, <i>./present_layer/all_tickets_map.js</i>, <i>./present_layer/all_tickets_map.css</i>, <i>./present_layer/all_tickets_map_data.php</i>).
-		<li>Moje tikety:</li> Stránka, na ktorej sú zobrazené tikety iba prihlaseného užívateľa. Pridáva sa možnosť vymazanie tiketu, ktorý je ešte len v stave "Zaevidovaný" (<i>./present_layer/my_tickets.php</i>, <i>./present_layer/my_tickets.js</i>, <i>./present_layer/my_tickets.css</i>, <i>./present_layer/my_tickets_data.php</i>).
-		<li>Odhlásiť:</li> Prihlásený užívateľ má samozrejme možnosť sa odhlásiť. Tým sa z neho stane neprihlásený užívateľ (<i>./present_layer/authentication/logout.php</i>).
+		<li>Všetky tikety:</li>(<i>./present_layer/all_tickets.php</i>) Táto funkcia pridáva možnosť užívateľom zobraziť si všetky nahlásené tikety. 
+		Zobrazenie je vo forme tabuľky, ktorá zobrazuje relevantné informácie o tiketoch. Dáta tabuľky sú získané v intervaloch pre prípad
+		zmeny obsahu (<i>./present_layer/all_tickets.js</i>,<i>./present_layer/all_tickets_data.php</i>,). 
+		Štylizácia je vedená slovami: "v jednoduchosti je krása" (<i>./present_layer/all_tickets.cs</i>).
+		<li>Mapa:</li> Jedná sa o nadstavbu a vylepšenie zobrazovania všetkých tiketov (<i>./present_layer/all_tickets_map.php</i>,
+		 <i>./present_layer/all_tickets_map.js</i>, <i>./present_layer/all_tickets_map.css</i>, <i>./present_layer/all_tickets_map_data.php</i>).
+		<li>Moje tikety:</li> Stránka, na ktorej sú zobrazené tikety iba prihlaseného užívateľa.
+		 Pridáva sa možnosť vymazania tiketu, pre ktorý ešte nebol vytvorený <i>service request</i> (<i>./present_layer/my_tickets.php</i>, 
+		 <i>./present_layer/my_tickets.js</i>, <i>./present_layer/my_tickets.css</i>, <i>./present_layer/my_tickets_data.php</i>).
+		<li>Odhlásiť:</li> Prihlásený užívateľ má samozrejme možnosť sa odhlásiť. Tým sa z neho stane neprihlásený užívateľ 
+		(<i>./present_layer/authentication/logout.php</i>).
 	</ul>
-	<li><b>Admin:</b></li> administrátorske rozhranie je chránené pred vstupom neautorizovaných užívateľom (<i>admin.php</i>). Všetky súbory sa nachádzajú v priečinku admin (<i>./present_layer/admin/*</i>).
+	<li><b>Admin:</b></li> administrátorske rozhranie je chránené pred vstupom neautorizovaných užívateľom (<i>admin.php</i>).
+	 Všetky súbory sa nachádzajú v priečinku admin (<i>./present_layer/admin/*</i>).
 	<ul>
 		<li>Pridať správcu mesta:</li> Ako jedniný môže vytvoriť správcov mesta.
-		<li>Spravovať užívateľov:</li> Má funkciu zobraziť všetkých užívateľov a prípadne ich odstrániť. Zobrazenie je vo forme tabuľky. Dáta tabuľky sú získané v intervaloch pre prípad
+		<li>Spravovať užívateľov:</li> Má funkciu zobraziť všetkých užívateľov a prípadne ich odstrániť. Zobrazenie je vo forme tabuľky. 
+		Dáta tabuľky sú získané v intervaloch pre prípad
 		zmeny obsahu.
 		<li>Odhlásiť:</li> Rovnako po vzore z užívateľského rozhrania.
 	</ul>
 	<li><b>Správca mesta:</b></li>
 	<ul>
-		<li>All tickets:</li> Hlavná stránka manažéra s rozhraním manager_tickets.php. Pre jednoduchú prácu obsahuje filter podľa stavu ticketu vo vzťahu k servivce requestu, relevantné zobrazenie ticketu a súvisiacého requestu. Formuláre a ďalšie informácie sú v rozbaľovacom bloku. Zabráňuje náhodným akciám pomocou onclick.js
+		<li>All tickets:</li> Hlavná stránka manažéra s rozhraním manager_tickets.php. 
+		Pre jednoduchú prácu obsahuje filter podľa stavu ticketu vo vzťahu k servivce requestu, relevantné zobrazenie ticketu a súvisiacého requestu. 
+		Formuláre a ďalšie informácie sú v rozbaľovacom bloku. Zabraňuje náhodným akciám pomocou onclick.js
 		<li>Mapa:</li> Rovnako po vzore z užívateľského rozhrania.
 		<li>Odhlásiť:</li> Rovnako po vzore z užívateľského rozhrania.
 	</ul>
 	<li><b>Servisný technik:</b></li>
 	<ul>
-		<li>Service requests:</li> Hlavná stránka technika s rozhraním worker_requests.php. Pre jednoduchú prácu obsahuje filter v závislosti od stavu tiketu, relevantnú prezentáciu požiadavku a súvisiacu službu technika. Formuláre a ďalšie informácie sú v rozbaľovacom bloku. Zabráňuje náhodným akciám pomocou onclick.js.
+		<li>Service requests:</li> Hlavná stránka technika s rozhraním worker_requests.php. 
+		Pre jednoduchú prácu obsahuje filter v závislosti od stavu tiketu, relevantnú prezentáciu požiadavku a súvisiacu službu technika. 
+		Formuláre a ďalšie informácie sú v rozbaľovacom bloku. Zabraňuje náhodným akciám pomocou onclick.js.
 		<li>Mapa:</li> Rovnako po vzore z užívateľského rozhrania.
 		<li>Odhlásiť:</li> Rovnako po vzore z užívateľského rozhrania.
 	</ul>
@@ -88,7 +103,7 @@ Podľa užívateľského rozhrania sa prihláseným otvárajú iné funkcie:
 <h3>Vrstva aplikačnej logiky (bussiness_layer)</h3>
 Obsahuje sadu skriptov vzťahujúcich sa ku konkrétnym funkciam. 
 <ul>
-	<li><i>./bussiness_layer/admin/*</i> - skripty súvisiace s rozhraním admina</li>
+	<li><i>./bussiness_layer/admin/*</i> - skripty súvisiace s rozhraním administrátora</li>
 	<li><i>./bussiness_layer/authentication/*</i> - Súbory z tohto priečinku sa používajú pri kontrolách registrácie a loginu.</li>
 	<li><i>./bussiness_layer/checks.php</i> - Funkcie tohto skriptu sa používajú na autorizáciu.</li>
 	<li><i>./bussiness_layer/constant.php</i> - uchováva používané konštanty.</li>
@@ -98,12 +113,14 @@ Obsahuje sadu skriptov vzťahujúcich sa ku konkrétnym funkciam.
 	<li><i>./bussiness_layer/redirect.php</i> - skript na presmerovanie na hlavnú stránku.</li>
 	<li><i>./bussiness_layer/remove_ticket.php</i> + <i>.js</i> - riešenie mazania tiketu z užívateľskeho rozhrania.</li>
 	<li><i>./bussiness_layer/state_change.php</i> - hlavné a pomocné funkcie používané na zmenu stavu ticketu alebo requestu.	</li>
-	<li><i>./bussiness_layer/manager_ticket_print.php</i> - Zhromažďuje zoznam všetkých ticketov pre manažéra, ktorý pozostáva z popisu a príznakov ticketov a requestov, navíc formulárov na správu.</li>
-	<li><i>./bussiness_layer/worker_ticket_print.php</i> - Zhromažďuje zoznam všetkých požiadaviek pre technika, ktorý pozostáva z popisu a formulárov na vybavenie.	</li>
+	<li><i>./bussiness_layer/manager_ticket_print.php</i> - Zhromažďuje zoznam všetkých ticketov pre manažéra, 
+		ktorý pozostáva z popisu a príznakov ticketov a requestov.</li>
+	<li><i>./bussiness_layer/worker_ticket_print.php</i> - Zhromažďuje zoznam všetkých požiadaviek pre technika, 
+		ktorý pozostáva z popisu a formulárov na vybavenie.	</li>
 
 </ul>
 <h3>Vrstva databázovej logiky (data_layer)</h3>
-Obsahuje skripty s funkciami pre prácu s databázov.
+Obsahuje skripty s funkciami pre prácu s databázou.
 <ul>
 	<li><i>./data_layer/db_request.php</i> - funkcie pre prácu s databázovou tabuľkou "SERVICE_REQUEST".</li>
 	<li><i>./data_layer/db_setup.php</i> - funkcie pre inicializáciu PDO.</li>
@@ -117,15 +134,19 @@ Obsahuje skripty s funkciami pre prácu s databázov.
 
 <h2>Instalace</h2>
 
-Stručně popište: 
-<ul>
-<li>postup instalace na server,</li>
-<li>softwarové požadavky (verze PHP apod.),</li>
-<li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
-</ul>
 
-<h2>Známé problémy</h2>
-<p>Zde popište, které body zadání nejsou implementovány a z jakého důvodu. Např. &bdquo;Z časových důvodů nebyla implementována správa uživatelů.&rdquo; Pomůžete tím zrychlit hodnocení, když neimplementované funkce nebudeme muset dlouze hledat.</p>
+<ul>
+<li>Aplikáciu je možné nainštalovať obyčajným rozbalením súboru <i>xpavel39.zip</i>. Program v odovzdanom stave vyžaduje, aby bol
+	umiestnený na serveri eva.fit.vutbr.cz. </li>
+
+<li>Databáza, ktorú program používa je uložená na serveri eva.fit.vutbr.cz a 
+	patrí užívateľovi xpavel39. Pokiaľ by stránka mala byť hostovaná na inom serveri, alebo by mala byť použitá iná databáza,
+	je nutné zmeniť údaje v súbore <i>db_setup.php</i>. Databáza môže byť následne vytvorená a naplnená ukážkovými dátami za pomoci
+	skriptu <i>script.sql</i>. <br>Pozn. Databáza je už samozrejme pripravená na testovanie projektu.</li>
+
+<li>Program sme vyíjali a testovali s PHP verziou 8.1.12. Teda východziou verziou na serveri <i>eva</i>.
+</li>
+</ul>
 
 </body>
 </html>
