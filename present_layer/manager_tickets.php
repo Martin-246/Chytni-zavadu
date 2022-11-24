@@ -24,29 +24,67 @@ function select_output($mode)
 {
     if($mode == 0) {
         echo "
-        <option selected='selected' value=0>0000000</option>
-        <option value=1>1111111</option>
-        <option value=2>2222222</option>";
+        <option selected='selected' value=0>All</option>
+        <option value=1>Not assigned</option>
+        <option value=2>Assigned</option>
+        <option value=3>Fixing</option>
+        <option value=4>Fixed</option>";
     }
     else if($mode == 1) {
         echo "
-        <option value=0>0000000</option>
-        <option selected='selected' value=1>1111111</option>
-        <option value=2>2222222</option>";
+        <option value=0>All</option>
+        <option selected='selected' value=1>Not assigned</option>
+        <option value=2>Assigned</option>
+        <option value=3>Fixing</option>
+        <option value=4>Fixed</option>";
     }
     else if($mode == 2) {
         echo "
-        <option value=0>0000000</option>
-        <option value=1>1111111</option>
-        <option selected='selected' value=2>2222222</option>";
+        <option value=0>All</option>
+        <option value=1>Not assigned</option>
+        <option selected='selected' value=2>Assigned</option>
+        <option value=3>Fixing</option>
+        <option value=4>Fixed</option>";
     }
+    else if($mode == 3) {
+        echo "
+        <option value=0>All</option>
+        <option value=1>Not assigned</option>
+        <option value=2>Assigned</option>
+        <option selected='selected' value=3>Fixing</option>
+        <option value=4>Fixed</option>";
+    }
+    else if($mode == 4) {
+        echo "
+        <option value=0>All</option>
+        <option value=1>Not assigned</option>
+        <option value=2>Assigned</option>
+        <option value=3>Fixing</option>
+        <option selected='selected' value=4>Fixed</option>";
+    }
+}
+
+if (isset($_POST['status']))
+{
+    $ticket_id = get_ID_by_submitVALUE($_POST['status']);
+
+    $pos = strpos($_POST['status'],"_",0);
+    $value = substr($_POST['status'],0,$pos);
+
+    update_state_ticket($ticket_id, $value);
+}
+
+if (isset($_POST['contains_ticket_id_comment']))
+{
+    $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id_comment']);
+
+    $comment = $_POST['comment'];
+    update_comment_ticket($ticket_id, $comment);
 }
 
 if (isset($_POST['contains_ticket_id']))
 {
     $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id']);
-
-    //update_state_ticket($ticket_id, 1);
 
     $worker_id = $_POST['worker'];
     $task = $_POST['task'];
@@ -73,18 +111,23 @@ if (isset($_POST['contains_ticket_id']))
         if(RowNested_last_num != null && RowNested_last_num != $row_num )
         {
             elem = document.getElementsByClassName("RowNested" + RowNested_last_num);
-            if(elem[0].style.display == "table-row")
-                elem[0].style.display="none";
+            for(var i = 0; i < elem.length; i++)
+            {
+                if(elem[i].style.display == "table-row")
+                    elem[i].style.display="none";
+            }
         }
         
         // Actual opening
         RowNested_last_num = $row_num;
         elem = document.getElementsByClassName("RowNested" + $row_num);
-
-        if (elem[0].style.display == "none")
-            elem[0].style.display="table-row";
-        else
-            elem[0].style.display="none";
+        for(var i = 0; i < elem.length; i++)
+        {
+            if (elem[i].style.display == "none")
+                elem[i].style.display="table-row";
+            else
+                elem[i].style.display="none";
+        }
     }
 
     /***
@@ -124,7 +167,6 @@ if (isset($_POST['contains_ticket_id']))
             <h2 class="user">Prihlásený ako:<br><?php echo print_user_from_email($_SESSION["email"]); ?></h2>
         </nav> 
 
-        <!-- all output TODO -->
         <form method="GET" action="">
         <select style='width:12%; float:right; margin-bottom: 16px;' name="filter" onchange="this.form.submit()">
             <?php 
@@ -136,16 +178,18 @@ if (isset($_POST['contains_ticket_id']))
         </select>
         </form>
 
-        <table>
+        <table cellpadding="0">
             <tr>
                 <th>ID</th>
                 <th>Category</th>
-                <th>Position(Street)</th>
+                <th style='width:13%;'>Position(Street)</th>
                 <th>Status</th>
+                <th>Req</th>
                 <th>Message from manager</th>
-                <th>Creation time</th>
+                <th>Time created</th>
+                <th>Time modified</th>
                 <th>Photo</th>
-                <th>Action</th>
+                <th style='width:5%;'>Action</th>
             </tr>
             <?php 
             if(isset($_GET['filter']))

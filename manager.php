@@ -21,12 +21,6 @@ if(! is_manager() )
 
     <br>
 
-    <form action="" class="inline">
-        <button>Requests of service</button>
-    </form>
-
-    <br>
-
     <form action="present_layer/all_tickets_map.php" class="inline">
         <button>Mapa</button>
     </form>

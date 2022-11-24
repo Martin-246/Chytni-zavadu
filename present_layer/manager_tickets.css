@@ -19,11 +19,22 @@ h2 {text-align: center;}
 .user{flex-grow: 1;text-align:right}
 table{border-collapse: collapse;width: 100%;}
 .nested {background-color: #e1e1e1;}
-.nested th {border:0px; font-size: 17px;padding-top:4px;padding-bottom:4px;}
-.nested td {border:0px; padding-bottom:17px;}
+.nested th {border:0px; font-size: 19px;padding-top:20px;padding-bottom:20px;}
+.nested td {border:0px;}
+.nestedfirst td {border:0px; padding-top:17px;}
+.nestedlast td {border:0px; padding-bottom:17px; border-bottom: 1px solid #000000;}
 th {border: 1px solid #000000;}
 td {border-bottom: 1px solid #000000;text-align: center;}
 img {width:50px;height:50px;}
-td > a {font-size:14px;background-color: #ececec;padding: 9px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;font-weight: bold;}
+td > a {font-size:16px;background-color: #ececec;padding: 8px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;font-weight: bold;}
 td > a:hover {background-color: #848482;color: #FFFFFFFF;}
 input,select {width: 100%; height:30px;}
+.service td {border:0px; padding-bottom:30px; text-align: left;}
+.intd {border:0px;}
+.intr {height: 40px;}
+form {margin: 0 auto;}
+
+
+.redText {background-color:#e64747; text-align: center;}
+.yellowText {background-color:#e6e22e; text-align: center;}
+.greenText {background-color:#5cb935; text-align: center;}

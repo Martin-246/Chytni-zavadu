@@ -30,13 +30,6 @@ function get_all_tickets(){
     $db = get_pdo();
     return $db->query("SELECT * FROM TICKET");
 }
-//function which handles database query
-//Takes: int: state
-//Returns: handle for ticket database view with state
-function get_tickets_by_state($state){
-    $db = get_pdo();
-    return $db->query("SELECT * FROM TICKET WHERE state_from_manager=".$state.";");
-}
 //function which handles database query. Inserts new ticket to database
 //Takes: int: category, float: lng, float: lat, string: file, int: author
 function upload_new_ticket($category,$lng,$lat,$file,$author){
@@ -52,7 +45,7 @@ function get_my_tickets($id){
     return $db->query("SELECT * FROM TICKET WHERE submitted_by=".$id.";");
 }
 //function which handles database query. Removes ticket and image from database
-//Takes: int: tikcet id
+//Takes: int: ticket id
 function remove_ticket($id){
     $db = get_pdo();
     $stmt = $db->query("SELECT photo FROM TICKET WHERE id='".$id."';");
@@ -63,8 +56,32 @@ function remove_ticket($id){
     $db->query("DELETE FROM TICKET WHERE id='".$id."';");
 }
 
+//updates state with $state of $id ticket
+//Takes: int: ticket id, int: state
 function update_state_ticket($id, $state){
     $db = get_pdo();
     return $db->query("UPDATE TICKET SET state_from_manager=$state WHERE id=".$id.";");
+}
+
+//updates comment with $comment of $id ticket
+//Takes: int: ticket id, string: comment
+function update_comment_ticket($id, $comment){
+    $db = get_pdo();
+    return $db->query("UPDATE TICKET SET msg_from_manager='$comment' WHERE id=".$id.";");
+}
+
+function get_tickets_by_state_manager($state){
+    $db = get_pdo();
+
+    if($state == 0)
+        return $db->query("SELECT * FROM TICKET");
+    else if($state == 1)
+        return $db->query("SELECT * FROM TICKET WHERE id != ALL (SELECT for_ticket FROM SERVICE_REQUEST);");
+    else if($state == 2)
+        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 0);");
+    else if($state == 3)
+        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 1);");   
+    else if($state == 4)
+        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 2);");  
 }
 ?>

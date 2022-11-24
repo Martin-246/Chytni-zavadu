@@ -20,7 +20,10 @@ function request_ticket_rows($state)
         exit();
     }
     
-    $requests_table = get_my_requests($id, $state);
+    if($state == 3)
+        $requests_table = get_my_requests($id);
+    else
+        $requests_table = get_my_requests_by_state($id, $state);
     
     while($row_request = $requests_table->fetch())
     {
@@ -47,7 +50,7 @@ function request_ticket_rows($state)
         "
         <tr class=\"RowNested$counter\" style=\"display:none\">
         <td colspan='6'>
-        <table>
+        <table class='menu'>
         <colgroup>
         <col width='25%'>
         <col width='6.25%'>
@@ -60,25 +63,25 @@ function request_ticket_rows($state)
             <th colspan='6' class='inhdr'>Request</th>
         </tr>
         <tr class='intr'>
-            <td class='indescr' colspan='1'>Ticket ID</td>
+            <td class='indescr' colspan='1'>Ticket ID:</td>
             <td colspan='4'>".$row_request['for_ticket']."</td>
             <td rowspan='4' colspan='1'><img src='$ticket[8]' alt=\"Chyba\"</td>
         </tr>
         <tr class='intr'>
-            <td class='indescr' colspan='1'>Category</td>
+            <td class='indescr' colspan='1'>Category:</td>
             <td colspan='4'>$ticket[1]</td>
         </tr>
         <tr class='intr'>
-            <td class='indescr' colspan='1'>Position</td>
+            <td class='indescr' colspan='1'>Position:</td>
             <td colspan='4'>$ticket[2] : $ticket[3]</td>
         </tr>
         <tr class='intr'>
-            <td class='indescr' colspan='1'>Location</td>
+            <td class='indescr' colspan='1'>Location:</td>
             <td colspan='4'>Brno-Stred</td>
         </tr>
         <tr class='intr'>
-            <td class='indescr' colspan='1'>Assignment</td>
-            <td colspan='5' style='text-align:left; padding-left:1%;'>".$row_request['description_from_manager']."</td>
+            <td class='indescr' style='padding-top:15px;padding-bottom:10px;' colspan='1'>Assignment:</td>
+            <td colspan='5' style='text-align:left; padding-left:1%; padding-top:15px;padding-bottom:10px;'>".$row_request['description_from_manager']."</td>
         </tr>
         </table>
         </td>
@@ -91,7 +94,7 @@ function request_ticket_rows($state)
             "
             <tr class=\"RowNested$counter\" style=\"display:none\">
             <td colspan='7'>
-            <table>
+            <table class='menu'>
             <colgroup>
             <col width='25%'>
             <col width='25%'>
@@ -103,13 +106,13 @@ function request_ticket_rows($state)
             </tr>
             <tr class='intr'>
                 <form id='form$counter' method='post' action='' enctype='multipart/form-data'>
-                <td class='indescr' colspan='1'>Expected date</td>
+                <td class='indescr' colspan='1'>Expected date:</td>
                 <td colspan='1'><input type='date' id='expected_date' name='expected_date'></td>
-                <td class='indescr' colspan='1'>Price</td>
+                <td class='indescr' colspan='1'>Price:</td>
                 <td colspan='1'><input type='number' step='0.01' id='price' name='price'><br></td>
             </tr>
             <tr class='intr'>
-                <td class='indescr' colspan='1'>Comment</td>
+                <td class='indescr' colspan='1'>Comment:</td>
                 <td colspan='3'><input type='text' id='comment' name='comment'></td>
             </tr>
             <tr>
@@ -126,7 +129,7 @@ function request_ticket_rows($state)
             $html = $html .
             "
             <tr class=\"RowNested$counter\" style=\"display:none\">
-            <td colspan='7'>
+            <td colspan='7' class='menu'>
             <table>
             <colgroup>
             <col width='25%'>
@@ -138,13 +141,13 @@ function request_ticket_rows($state)
                 <th colspan='4' class='inhdr'>Service</th>
             </tr>
             <tr class='intr'>
-                <td class='indescr' colspan='1'>Expected date</td>
+                <td class='indescr' colspan='1'>Expected date:</td>
                 <td colspan='1'>".$row_request['expected_date']."</td>
-                <td class='indescr' colspan='1'>Price</td>
+                <td class='indescr' colspan='1'>Price:</td>
                 <td colspan='1'>".$row_request['price']."</td>
             </tr>
             <tr class='intr'>
-                <td class='indescr' colspan='1'>Comment</td>
+                <td class='indescr' colspan='1'>Comment:</td>
                 <td colspan='3' style='text-align:left; padding-left:1%;'>".$row_request['comment_from_worker']."</td>
             </tr>
             <tr>
@@ -162,7 +165,7 @@ function request_ticket_rows($state)
             $html = $html .
             "
             <tr class=\"RowNested$counter\" style=\"display:none\">
-            <td colspan='7'>
+            <td colspan='7' class='menu'>
             <table>
             <colgroup>
             <col width='18.75%'>
@@ -177,15 +180,15 @@ function request_ticket_rows($state)
                 <th colspan='7' class='inhdr'>Service</th>
             </tr>
             <tr class='intr'>
-                <td class='indescr' colspan='1'>Expected date</td>
+                <td class='indescr' colspan='1'>Expected date:</td>
                 <td colspan='2'>".$row_request['expected_date']."</td>
-                <td class='indescr' colspan='1'>Fixed date</td>
+                <td class='indescr' colspan='1'>Fixed date:</td>
                 <td colspan='1'>".$row_request['date_fixed']."</td>
-                <td class='indescr' colspan='1'>Price</td>
+                <td class='indescr' colspan='1'>Price:</td>
                 <td colspan='1'>".$row_request['price']."</td>
             </tr>
             <tr class='intr'>
-                <td class='indescr' colspan='2'>Comment</td>
+                <td class='indescr' colspan='2'>Comment:</td>
                 <td colspan='5' style='text-align:left; padding-left:1%;'>".$row_request['comment_from_worker']."</td>
             </tr>
             </table>

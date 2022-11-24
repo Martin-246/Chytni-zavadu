@@ -20,7 +20,7 @@ h2 {text-align: center;}
 table{border-collapse: collapse;width: 100%;}
 tr {height: 35px;}
 .intr {height: 30px;}
-.inhdr {border:0px; font-size: 20px; background-color: #F2E7D5;}
+.inhdr {border:0px; font-size: 20px; background-color: #e1e1e1;}
 .indescr {font-weight: bold;}
 .intextbox {text-align:left; padding-left:1%;}
 th {border: 0px solid #000000;}
@@ -28,10 +28,5 @@ td {border: 1px solid #000000;text-align: center;} /*border-bottom*/
 img {width:125px;height:125px;}
 td > a {padding-left: 10px;padding-right: 10px;color: #000000 ;text-decoration: none;border: 1px solid #000000;border-radius: 5px;font-weight: bold;height: 20px;}
 td > a:hover {background-color: #848482;color: #FFFFFFFF;}
-
-
-
-
-/* <tr style='height: 0;'>
-<td colspan='5'; style='text-align:right; border:0px'>Edited (by mngr): $ticket[7]</td>
-</tr> */
+input,select {width: 100%; height:30px;}
+.menu td {border:0px;}

@@ -6,9 +6,14 @@ include_once("db_user.php");
  * Getting requests depending on $state of $id worker
  * @return PDOStatement object
  */
-function get_my_requests($id, $state){
+function get_my_requests_by_state($id, $state){
     $db = get_pdo();
     return $db->query("SELECT * FROM SERVICE_REQUEST WHERE worker_id=".$id." AND state=".$state.";");
+}
+
+function get_my_requests($id){
+    $db = get_pdo();
+    return $db->query("SELECT * FROM SERVICE_REQUEST WHERE worker_id=".$id.";");
 }
 
 /***
@@ -66,10 +71,5 @@ function insert_request($worker_id, $ticket_id, $task)
 
     $stmt->execute(["worker_id"=>$worker_id, "ticket_id" => $ticket_id , "task"=> $task , 'state'=>$state]);
 }
-
-// function aaa($request_id){
-//     $db = get_pdo();
-//     return $db->query("DELETE FROM SERVICE_REQUEST WHERE id=".$request_id.";");
-// }
 
 ?>

@@ -23,23 +23,33 @@ function print_user_from_email($email){
  */
 function select_output($mode)
 {
-    if($mode == 0) {
+    if($mode == 3) {
         echo "
-        <option selected='selected' value=0>0000000</option>
-        <option value=1>1111111</option>
-        <option value=2>2222222</option>";
+        <option selected='selected' value=3>All</option>
+        <option value=0>Zaevidovaný</option>
+        <option value=1>Pracujeme na tom</option>
+        <option value=2>Vyriešené</option>";
+    }
+    else if($mode == 0) {
+        echo "
+        <option value=3>All</option>
+        <option selected='selected' value=0>Zaevidovaný</option>
+        <option value=1>Pracujeme na tom</option>
+        <option value=2>Vyriešené</option>";
     }
     else if($mode == 1) {
         echo "
-        <option value=0>0000000</option>
-        <option selected='selected' value=1>1111111</option>
-        <option value=2>2222222</option>";
+        <option value=3>All</option>
+        <option value=0>Zaevidovaný</option>
+        <option selected='selected' value=1>Pracujeme na tom</option>
+        <option value=2>Vyriešené</option>";
     }
     else if($mode == 2) {
         echo "
-        <option value=0>0000000</option>
-        <option value=1>1111111</option>
-        <option selected='selected' value=2>2222222</option>";
+        <option value=3>All</option>
+        <option value=0>Zaevidovaný</option>
+        <option value=1>Pracujeme na tom</option>
+        <option selected='selected' value=2>Vyriešené</option>";
     }
 }
 
@@ -71,18 +81,23 @@ else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 
         if(RowNested_last_num != null && RowNested_last_num != $row_num )
         {
             elem = document.getElementsByClassName("RowNested" + RowNested_last_num);
-            if(elem[0].style.display == "table-row")
-                elem[0].style.display="none";
+            for(var i = 0; i < elem.length; i++)
+            {
+                if(elem[i].style.display == "table-row")
+                    elem[i].style.display="none";
+            }
         }
         
         // Actual opening
         RowNested_last_num = $row_num;
         elem = document.getElementsByClassName("RowNested" + $row_num);
-
-        if (elem[0].style.display == "none")
-            elem[0].style.display="table-row";
-        else
-            elem[0].style.display="none";
+        for(var i = 0; i < elem.length; i++)
+        {
+            if (elem[i].style.display == "none")
+                elem[i].style.display="table-row";
+            else
+                elem[i].style.display="none";
+        }
     }
 
     /***
@@ -122,19 +137,18 @@ else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 
             <h2 class="user">Prihlásený ako:<br><?php echo print_user_from_email($_SESSION["email"]); ?></h2>
         </nav> 
 
-        <!-- all output TODO -->
         <form method="GET" action="">
-        <select name="filter" onchange="this.form.submit()">
+        <select style='width:12%; float:right; margin-bottom: 16px;' name="filter" onchange="this.form.submit()">
             <?php 
             if(isset($_GET['filter']))
                 select_output($_GET['filter']);
             else
-                select_output(0);
+                select_output(3);
             ?>
         </select>
         </form>
 
-        <table>
+        <table cellpadding="0">
             <tr>
                 <th>Request ID</th>
                 <th>Kategoria</th>
@@ -147,7 +161,7 @@ else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 
             if(isset($_GET['filter']))
                 echo request_ticket_rows($_GET['filter']);
             else
-                echo request_ticket_rows(0);
+                echo request_ticket_rows(3);
             ?>
         </table>
         
