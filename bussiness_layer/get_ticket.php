@@ -78,6 +78,8 @@ function my_ticket_rows(){
                 //if state is 0 then user have ability to remove ticket
                 if ($my_ticket[4] == $description_state[0]){
                     $html = $html . '<td><button onclick="handle_remove_button('. $my_ticket[0] .')">Vymazať</button></td>'."\n";
+                }else{
+                    $html = $html . '<td></td>'."\n";
                 }
                 
             }else {

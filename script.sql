@@ -58,6 +58,8 @@ INSERT INTO CATEGORY (description) VALUES ("Problém s kanalizáciou");
 INSERT INTO CATEGORY (description) VALUES ("Vrak auta");
 INSERT INTO CATEGORY (description) VALUES ("Iné");
 
+
+INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Anonymny","Uzivatel","user@user.com","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Jozko","Obycajny","user@fit.com","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Danko","Bezny","user2@fit.com","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Zdena","Neaktivna","user3@fit.com","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
