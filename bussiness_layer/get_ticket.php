@@ -76,7 +76,7 @@ function my_ticket_rows(){
                 $html = $html . '<td><img src="'. $my_ticket[$i] .'" alt="Chyba" </td>'."\n";
             }else if($i == count($my_ticket)){
                 //if state is 0 then user have ability to remove ticket
-                if ($my_ticket[4] == $description_state[0]){
+                if ( ! ticket_has_service_requests($my_ticket[0])){
                     $html = $html . '<td><button onclick="handle_remove_button('. $my_ticket[0] .')">Vymazať</button></td>'."\n";
                 }
                 

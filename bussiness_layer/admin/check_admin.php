@@ -1,4 +1,7 @@
 <?php
+/***
+ * @author xpavel39@stud.fit.vutbr.cz
+ */
     chdir('.'); // root
     include_once('./data_layer/db_user.php');
     include_once('./bussiness_layer/constants.php');
