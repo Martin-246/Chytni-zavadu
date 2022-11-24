@@ -30,8 +30,8 @@ CREATE TABLE TICKET (
   lat float(10,6) NOT NULL,
   state_from_manager INTEGER NOT NULL,
   msg_from_manager varchar(255),
-  time_created timestamp NOT NULL,
-  time_modified timestamp NOT NULL
+  time_modified timestamp NOT NULL,
+  time_created timestamp NOT NULL
 );
 
 CREATE TABLE SERVICE_REQUEST(
