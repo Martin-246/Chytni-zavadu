@@ -72,8 +72,8 @@ INSERT INTO TICKET (category,submitted_by,photo,lng,lat,state_from_manager,time_
 INSERT INTO TICKET (category,submitted_by,photo,lng,lat,state_from_manager,time_created,time_modified) VALUES (2,1,'../img/lamp.jpg',16.612346,49.231412,0,'2022-11-23 12:44:46','2022-11-23 19:03:27');
 
 INSERT INTO SERVICE_REQUEST (worker_id,for_ticket,description_from_manager,expected_date,state,date_fixed,comment_from_worker,price)
-  VALUES (6,1,'Prosím upracte smeti, ktoré sú rozsypané na ulici.','2022-11-23',2,'2022-11-23','Upratal som to.',200);
+  VALUES (7,1,'Prosím upracte smeti, ktoré sú rozsypané na ulici.','2022-11-23',2,'2022-11-23','Upratal som to.',200);
 INSERT INTO SERVICE_REQUEST (worker_id,for_ticket,description_from_manager,expected_date,state,comment_from_worker)
-  VALUES (6,2,'Prosím skontrolujte stav vozovky. Ak je v zlom stave, opravte ju.','2022-11-29',1,'Cesta vyžaduje opravu. Zajtra sa do toho pustím.');
+  VALUES (7,2,'Prosím skontrolujte stav vozovky. Ak je v zlom stave, opravte ju.','2022-11-29',1,'Cesta vyžaduje opravu. Zajtra sa do toho pustím.');
 
  
