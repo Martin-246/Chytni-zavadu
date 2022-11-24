@@ -71,8 +71,18 @@ Podľa užívateľského rozhrania sa prihláseným otvárajú iné funkcie:
 		zmeny obsahu.
 		<li>Odhlásiť:</li> Rovnako po vzore z užívateľského rozhrania.
 	</ul>
-	<li><b>Správca mesta:</b></li> TODO
-	<li><b>Servisný technik:</b></li> TODO
+	<li><b>Správca mesta:</b></li>
+	<ul>
+		<li>All tickets:</li> TEXT
+		<li>Mapa:</li> TEXT
+		<li>Odhlásiť:</li> Rovnako po vzore z užívateľského rozhrania.
+	</ul>
+	<li><b>Servisný technik:</b></li>
+	<ul>
+		<li>Service requests:</li> TEXT
+		<li>Mapa:</li> TEXT
+		<li>Odhlásiť:</li> Rovnako po vzore z užívateľského rozhrania.
+	</ul>
 </ul>
 <h3>Vrstva aplikačnej logiky (bussiness_layer)</h3>
 Obsahuje sadu skriptov vzťahujúcich sa ku konkrétnym funkciam. 
@@ -83,14 +93,12 @@ Obsahuje sadu skriptov vzťahujúcich sa ku konkrétnym funkciam.
 	<li><i>./bussiness_layer/constant.php</i> - uchováva používané konštanty.</li>
 	<li><i>./bussiness_layer/create_ticket.php</i> - je skript zavloaný v prípade vytvorenia nového tiketu, kde sa skontrolujú jeho vstupné dáta z formulára.</li>
 	<li><i>./bussiness_layer/get_ticket.php</i> -  obsahuje sadu funkcií pre prácu s tiketmi.</li>
-	<li><i>./bussiness_layer/manager_ticket_print.php</i> - TODO</li>
 	<li><i>./bussiness_layer/print_categories.php</i> - funkcia na výpis možností kategórií.</li>
 	<li><i>./bussiness_layer/redirect.php</i> - skript na presmerovanie na hlavnú stránku.</li>
 	<li><i>./bussiness_layer/remove_ticket.php</i> + <i>.js</i> - riešenie mazania tiketu z užívateľskeho rozhrania.</li>
-	<li><i>./bussiness_layer/state_change.php</i> - TODO</li>
-	<li><i>./bussiness_layer/worker_0_1.php</i> - TODO</li>
-	<li><i>./bussiness_layer/worker_0_2.php</i> - TODO</li>
-	<li><i>./bussiness_layer/worker_ticket_print.php</i> - TODO</li>
+	<li><i>./bussiness_layer/state_change.php</i> - TEXT</li>
+	<li><i>./bussiness_layer/manager_ticket_print.php</i> - TEXT</li>
+	<li><i>./bussiness_layer/worker_ticket_print.php</i> - TEXT</li>
 
 </ul>
 <h3>Vrstva databázovej logiky (data_layer)</h3>
