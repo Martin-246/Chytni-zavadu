@@ -70,6 +70,22 @@ function update_comment_ticket($id, $comment){
     return $db->query("UPDATE TICKET SET msg_from_manager='$comment' WHERE id=".$id.";");
 }
 
+/***
+ * Determine if ticket with given ID has any active servie requests
+ */
+function ticket_has_service_requests($ticket_id)
+{
+    $pdo = get_pdo();
+
+    $stmt = $pdo->prepare('SELECT * FROM SERVICE_REQUEST WHERE for_ticket = ?;');
+    $stmt->execute([$ticket_id]);
+
+    if($stmt->fetch())
+        return true;
+    
+    return false;
+}
+
 //getting specific tickets depending on filter $state.
 //Takes: int: state
 function get_tickets_by_state_manager($state){

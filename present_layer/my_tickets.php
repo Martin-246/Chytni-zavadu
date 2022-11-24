@@ -2,7 +2,8 @@
 //script which generate table for all tickets
 chdir('..'); // ---> root
 include_once("./bussiness_layer/checks.php");
-session_start();
+if(session_id() == "")
+        session_start();
 is_logged();
 //function which prints email without domain.
 //Takes: string: whole email adress (user@user.com)

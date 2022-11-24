@@ -1,6 +1,9 @@
 <?php
 //script which generate table for all tickets
 chdir('..'); // ---> root
+include_once('./bussiness_layer/checks.php');
+is_logged(); // Allow only authenticated users
+
 include_once("./bussiness_layer/get_ticket.php");
 include_once("./data_layer/db_user.php");
 echo "

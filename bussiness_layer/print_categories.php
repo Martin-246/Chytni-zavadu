@@ -1,5 +1,5 @@
 <?php
-include_once("../data_layer/db_tickets.php");
+include_once("./data_layer/db_tickets.php");
 //function which prints category as option
 function print_categories(){
     $categories = get_categories();
