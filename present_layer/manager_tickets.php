@@ -64,34 +64,22 @@ function select_output($mode)
     }
 }
 
-//Ticket status update
+// Ticket status update
 if (isset($_POST['status']))
 {
-    $ticket_id = get_ID_by_submitVALUE($_POST['status']);
-
-    $pos = strpos($_POST['status'],"_",0);
-    $value = substr($_POST['status'],0,$pos);
-
-    update_state_ticket($ticket_id, $value);
+    ticket_state_transition();
 }
 
-//Ticket the message from manager update
+// The ticket message from manager update
 if (isset($_POST['contains_ticket_id_comment']))
 {
-    $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id_comment']);
-
-    $comment = $_POST['comment'];
-    update_comment_ticket($ticket_id, $comment);
+    ticket_message_update();
 }
 
-//Assigning a request to a worker
+// Assigning a request to a worker
 if (isset($_POST['contains_ticket_id']))
 {
-    $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id']);
-
-    $worker_id = $_POST['worker'];
-    $task = $_POST['task'];
-    insert_request($worker_id, $ticket_id, $task);
+    request_assigning();
 }
 
 ?>

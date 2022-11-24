@@ -35,4 +35,40 @@ function worker_1_2()
 
     state_update_1_2($req_id);
 }
+
+/***
+ * Needed actions to do ticket state transition to POST status
+ */
+function ticket_state_transition()
+{
+    $ticket_id = get_ID_by_submitVALUE($_POST['status']);
+
+    $pos = strpos($_POST['status'],"_",0);
+    $value = substr($_POST['status'],0,$pos);
+
+    update_state_ticket($ticket_id, $value);
+}
+
+/***
+ * Needed actions to assign the request of a ticket to POST worker
+ */
+function request_assigning()
+{
+    $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id']);
+
+    $worker_id = $_POST['worker'];
+    $task = $_POST['task'];
+    insert_request($worker_id, $ticket_id, $task);
+}
+
+/***
+ * Needed actions to update a message from manager of a ticket with POST comment
+ */
+function ticket_message_update()
+{
+    $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id_comment']);
+
+    $comment = $_POST['comment'];
+    update_comment_ticket($ticket_id, $comment);
+}
 ?>
