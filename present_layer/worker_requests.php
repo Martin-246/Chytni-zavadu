@@ -69,6 +69,8 @@ else if (isset($_POST['contains_request_id_1_2']))
     <head>
     <link rel="stylesheet" type="text/css" href="./worker_requests.css" />
     <script type="text/javascript" src="./onclick.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../bussiness_layer/get_address.js"></script>
     </head>
     
     <body>

@@ -38,7 +38,7 @@ function request_ticket_rows($state)
             $html = $html . "<tr style='background-color: #5cb935;'>\n";
         $html = $html . "<td>". $row_request['id'] ."</td>"."\n"; //request id
         $html = $html . "<td>". $ticket[1] ."</td>"."\n"; //category
-        $html = $html . "<td>". $ticket[2]." : ". $ticket[3] ."</td>\n"; // lng:lat
+        $html = $html . "<td id='address".$ticket[0]."'><script type='text/javascript'>get_address(".$ticket[0].",".$ticket[2].",".$ticket[3].");</script></td>\n"; //street
         if($row_request['state'] != 2)
             $html = $html . "<td>". $row_request['expected_date'] ."</td>"."\n"; //expected_date
         else
@@ -77,7 +77,7 @@ function request_ticket_rows($state)
         </tr>
         <tr class='intr'>
             <td class='indescr' colspan='1'>Location:</td>
-            <td colspan='4'>Brno-Stred</td>
+            <td colspan='4' id='address".$ticket[0]."a'><script type='text/javascript'>get_address('".$ticket[0]."a',".$ticket[2].",".$ticket[3].");</script></td>
         </tr>
         <tr class='intr'>
             <td class='indescr' style='padding-top:15px;padding-bottom:10px;' colspan='1'>Assignment:</td>

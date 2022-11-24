@@ -89,7 +89,8 @@ function ticket_rows($state)
 
         $html = $html . "<td>". $ticket[0] ."</td>"."\n"; //id
         $html = $html . "<td>". $ticket[1] ."</td>"."\n"; //category
-        $html = $html . "<td>". $ticket[2]." : ". $ticket[3] ."</td>\n"; // lng:lat
+        $html = $html . "<td id=address".$ticket[0]."><script type='text/javascript'>get_address(".$ticket[0].",".$ticket[2].",".$ticket[3].");</script></td>\n"; //street
+        //$html = $html . "<td>". $ticket[2]." : ". $ticket[3] ."</td>\n"; // lng:lat
         //status
         if($ticket[4] == 'Zaevidovaný')
         {
