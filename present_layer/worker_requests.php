@@ -53,11 +53,13 @@ function select_output($mode)
     }
 }
 
-if (isset($_POST['contains_request_id_0_1'])) // Expected_date & Price sending (0 -> 1 state).
+// Expected_date & Price sending (0 -> 1 state)
+if (isset($_POST['contains_request_id_0_1']))
 {
     worker_0_1();
 }
-else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 state).
+// Request finishing (1 -> 2 state)
+else if (isset($_POST['contains_request_id_1_2'])) 
 {
     worker_1_2();
 }
@@ -66,68 +68,7 @@ else if (isset($_POST['contains_request_id_1_2'])) // Request finishing (1 -> 2 
 <html>
     <head>
     <link rel="stylesheet" type="text/css" href="./worker_requests.css" />
-
-    <script type="text/javascript">
-    var RowNested_last_num = null;
-
-    /***
-     * Expending a block of the next data under an item $row_num
-     */
-    function Expand($row_num)
-    {
-        var elem;
-
-        // Last hiding
-        if(RowNested_last_num != null && RowNested_last_num != $row_num )
-        {
-            elem = document.getElementsByClassName("RowNested" + RowNested_last_num);
-            for(var i = 0; i < elem.length; i++)
-            {
-                if(elem[i].style.display == "table-row")
-                    elem[i].style.display="none";
-            }
-        }
-        
-        // Actual opening
-        RowNested_last_num = $row_num;
-        elem = document.getElementsByClassName("RowNested" + $row_num);
-        for(var i = 0; i < elem.length; i++)
-        {
-            if (elem[i].style.display == "none")
-                elem[i].style.display="table-row";
-            else
-                elem[i].style.display="none";
-        }
-    }
-
-    /***
-     * Popping up of confirmation window, cancels in case 'No' choice
-     */
-    function clicked(event)
-    {
-        if(!confirm('Confirm the action.')){
-            event.preventDefault();
-            return false;
-        }
-        else
-            return true;
-    }
-    /***
-     * Popping up of confirmation window, cancels in case 'No' choice. Then alert window if all fields aren't filled in the form $counter
-     */
-    function clicked_0_1(event, $counter)
-    {
-        if(clicked(event))
-        {
-            var elem1 = document.forms["form"+$counter]["price"].value;
-            var elem2 = document.forms["form"+$counter]["expected_date"].value;
-            if (elem1 == "" || elem2 == "") {
-                alert("Fill in all the fields!");
-                event.preventDefault();
-            }
-        }
-    }
-    </script>   
+    <script type="text/javascript" src="./onclick.js"></script>
     </head>
     
     <body>

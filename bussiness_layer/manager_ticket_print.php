@@ -43,14 +43,16 @@ function worker_select_htmlgenerator($array) {
     return $html;
 }
 
+/***
+ * Getting first and last name of $id from certain $array
+ * @return html code
+ */
 function get_name_by_id($array, $id) {
     for ($i = 0; $i < sizeof($array); $i++) 
     {
         if($array[$i][0] == $id)
             return $array[$i][1] . " " . $array[$i][2];
     }
-    
-    
 }
 
 /***

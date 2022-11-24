@@ -70,18 +70,20 @@ function update_comment_ticket($id, $comment){
     return $db->query("UPDATE TICKET SET msg_from_manager='$comment' WHERE id=".$id.";");
 }
 
+//getting specific tickets depending on filter $state.
+//Takes: int: state
 function get_tickets_by_state_manager($state){
     $db = get_pdo();
 
     if($state == 0)
-        return $db->query("SELECT * FROM TICKET");
+        return $db->query("SELECT * FROM TICKET"); // All
     else if($state == 1)
-        return $db->query("SELECT * FROM TICKET WHERE id != ALL (SELECT for_ticket FROM SERVICE_REQUEST);");
+        return $db->query("SELECT * FROM TICKET WHERE id != ALL (SELECT for_ticket FROM SERVICE_REQUEST);"); // Not assigned
     else if($state == 2)
-        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 0);");
+        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 0);"); // Assigned
     else if($state == 3)
-        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 1);");   
+        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 1);"); // Fixing
     else if($state == 4)
-        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 2);");  
+        return $db->query("SELECT * FROM TICKET WHERE id = ANY (SELECT for_ticket FROM SERVICE_REQUEST WHERE state = 2);"); // Fixed
 }
 ?>

@@ -11,6 +11,10 @@ function get_my_requests_by_state($id, $state){
     return $db->query("SELECT * FROM SERVICE_REQUEST WHERE worker_id=".$id." AND state=".$state.";");
 }
 
+/***
+ * Getting all requests of $id worker
+ * @return PDOStatement object
+ */
 function get_my_requests($id){
     $db = get_pdo();
     return $db->query("SELECT * FROM SERVICE_REQUEST WHERE worker_id=".$id.";");

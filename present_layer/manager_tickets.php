@@ -64,6 +64,7 @@ function select_output($mode)
     }
 }
 
+//Ticket status update
 if (isset($_POST['status']))
 {
     $ticket_id = get_ID_by_submitVALUE($_POST['status']);
@@ -74,6 +75,7 @@ if (isset($_POST['status']))
     update_state_ticket($ticket_id, $value);
 }
 
+//Ticket the message from manager update
 if (isset($_POST['contains_ticket_id_comment']))
 {
     $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id_comment']);
@@ -82,6 +84,7 @@ if (isset($_POST['contains_ticket_id_comment']))
     update_comment_ticket($ticket_id, $comment);
 }
 
+//Assigning a request to a worker
 if (isset($_POST['contains_ticket_id']))
 {
     $ticket_id = get_ID_by_submitVALUE($_POST['contains_ticket_id']);
@@ -96,68 +99,7 @@ if (isset($_POST['contains_ticket_id']))
 <html>
     <head>
     <link rel="stylesheet" type="text/css" href="./manager_tickets.css" />
-
-    <script type="text/javascript">
-    var RowNested_last_num = null;
-
-    /***
-     * Expending a block of the next data under an item $row_num
-     */
-    function Expand($row_num)
-    {
-        var elem;
-
-        // Last hiding
-        if(RowNested_last_num != null && RowNested_last_num != $row_num )
-        {
-            elem = document.getElementsByClassName("RowNested" + RowNested_last_num);
-            for(var i = 0; i < elem.length; i++)
-            {
-                if(elem[i].style.display == "table-row")
-                    elem[i].style.display="none";
-            }
-        }
-        
-        // Actual opening
-        RowNested_last_num = $row_num;
-        elem = document.getElementsByClassName("RowNested" + $row_num);
-        for(var i = 0; i < elem.length; i++)
-        {
-            if (elem[i].style.display == "none")
-                elem[i].style.display="table-row";
-            else
-                elem[i].style.display="none";
-        }
-    }
-
-    /***
-     * Popping up of confirmation window, cancels in case 'No' choice
-     */
-    function clicked(event)
-    {
-        if(!confirm('Confirm the action.')){
-            event.preventDefault();
-            return false;
-        }
-        else
-            return true;
-    }
-    /***
-     * Popping up alert window if all fields aren't filled in the form $counter
-     */
-    function clicked_form(event, $counter)
-    {
-        if(clicked(event))
-        {
-            var elem1 = document.forms["form"+$counter]["task"].value;
-            var elem2 = document.forms["form"+$counter]["worker"].value;
-            if (elem1 == "" || elem2 == "") {
-                alert("Fill in all the fields!");
-                event.preventDefault();
-            }
-        }
-    }
-    </script>   
+    <script type="text/javascript" src="./onclick.js"></script>
     </head>
     
     <body>
