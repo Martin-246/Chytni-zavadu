@@ -16,8 +16,6 @@ function print_user_from_email($email){
 <html>
     <head>
     <link rel="stylesheet" type="text/css" href="./my_tickets.css" />
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="module" src="./my_tickets.js"></script>
     <script type="text/javascript" src="../bussiness_layer/remove_ticket.js"></script>

@@ -20,13 +20,13 @@ function get_address(id,lat,lng){
 
             if(response.status !== "ZERO_RESULTS")
             {
-                console.log(id);  
-                console.log(response.results[0].formatted_address);
+                //console.log(id);  
+                //console.log(response.results[0].formatted_address);
                 //console.log(JSON.parse(response[0].address_components[1].short_name));
                 $('#address'+id).html(response.results[0].formatted_address);
             }
             else
-                $('#address'+id).html("Brno");
+                $('#address'+id).html(lat+" : "+lng);
         }
     });
 }
