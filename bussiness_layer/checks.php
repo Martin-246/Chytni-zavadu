@@ -3,11 +3,14 @@ include_once("./data_layer/db_user.php");
 include_once('./bussiness_layer/constants.php');
 
 function is_logged(){
+    if(session_id() == "")
+        session_start();
+        
     if (isset($_SESSION["email"])){
         return 1;
     }else{
         echo "Na túto akciu musíš byť prihlasený! Redirecting to index....";
-        header("refresh:2; ../index.php");
+        header("refresh:1; ../index.php");
         exit();
     }
 }

@@ -1,9 +1,14 @@
 <?php
 //script which generate table for my tickets
 chdir('..'); // ---> root
+
+include_once('./bussiness_layer/checks.php');
+is_logged(); // Allow only authenticated users
+
 include_once("./bussiness_layer/get_ticket.php");
 include_once("./data_layer/db_user.php");
-session_start();
+if(session_id() == "")
+        session_start();
 if(isset($_SESSION["email"])){
 }else {
     echo "fatal error";

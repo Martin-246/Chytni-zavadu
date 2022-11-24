@@ -1,7 +1,13 @@
 <?php
+chdir('..'); // root
 //Page for creating new tickets
-session_start();
-include_once('../bussiness_layer/print_categories.php');
+if(session_id() == "")
+        session_start();
+
+include_once('./bussiness_layer/checks.php');
+is_logged(); // Allow only authenticated users
+
+include_once('./bussiness_layer/print_categories.php');
 ?>
 <html>
     <head>

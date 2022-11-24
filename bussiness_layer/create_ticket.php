@@ -1,5 +1,6 @@
 <?php
-session_start();
+if(session_id() == "")
+  session_start();
 //default anonymous user for tickets registred by non registred users
 $author = "user@user.com";
 //if user is logged, use his email
