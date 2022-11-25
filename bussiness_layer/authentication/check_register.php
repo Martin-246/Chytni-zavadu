@@ -55,8 +55,9 @@
 
         $f_name = isset($_POST['f_name']) ? $_POST['f_name'] : "";
         $l_name = isset($_POST['l_name']) ? $_POST['l_name'] : "";
+        $phone = isset($_POST['phone']) ? $_POST['phone'] : "";
 
-        insert_user($f_name,$l_name,$email,$pw_hash,$role);
+        insert_user($f_name,$l_name,$email,$phone,$pw_hash,$role);
 
         unset_filled_data();
 
