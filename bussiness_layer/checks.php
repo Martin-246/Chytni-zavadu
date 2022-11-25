@@ -44,8 +44,8 @@ function is_manager()
 }
 
     /***
-     * Check if data submitted by form to register new manager are correct.
-     * If they are, also add the manager to database
+     * Check if data submitted by form to register new worker are correct.
+     * If they are, also add the worker to database
      */
     function check_add_worker()
     {
