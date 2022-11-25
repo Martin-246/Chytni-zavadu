@@ -5,7 +5,8 @@ form {text-align: center;}
 
 <?php
 include_once("./bussiness_layer/checks.php");
-session_start();
+if(session_id() == "")
+    session_start();
 if(! is_manager() )
     header('Location: ./index.php');
 ?>
@@ -17,6 +18,12 @@ if(! is_manager() )
 
     <form action="present_layer/manager_tickets.php" class="inline">
         <button>All tickets</button>
+    </form>
+
+    <br>
+
+    <form action="present_layer/add_worker.php" class="inline">
+        <button>Pridať technického pracovníka</button>
     </form>
 
     <br>

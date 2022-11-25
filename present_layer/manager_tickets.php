@@ -4,7 +4,8 @@ include_once('./bussiness_layer/checks.php');
 include_once("./bussiness_layer/manager_ticket_print.php");
 include_once("./bussiness_layer/state_change.php");
 
-session_start();
+if(session_id() == "")
+    session_start();
 if(! is_manager() )
     header('Location: ../index.php');
 

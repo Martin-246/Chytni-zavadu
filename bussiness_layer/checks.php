@@ -1,6 +1,7 @@
 <?php 
 include_once("./data_layer/db_user.php");
 include_once('./bussiness_layer/constants.php');
+include_once('./bussiness_layer/authentication/check_register.php');
 
 function is_logged(){
     if(session_id() == "")
@@ -41,6 +42,15 @@ function is_manager()
     }
     return false;
 }
+
+    /***
+     * Check if data submitted by form to register new manager are correct.
+     * If they are, also add the manager to database
+     */
+    function check_add_worker()
+    {
+        return check_registration(WORKER,false);
+    }
 
 //$pwd = (dir(getcwd()))->path;
 ?>
