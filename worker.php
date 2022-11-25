@@ -5,7 +5,8 @@ form {text-align: center;}
 
 <?php
 include_once("./bussiness_layer/checks.php");
-session_start();
+if(session_id() == "")
+    session_start();
 if(! is_worker() )
     header('Location: ./index.php');
 ?>

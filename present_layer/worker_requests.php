@@ -5,7 +5,8 @@ include_once('./bussiness_layer/checks.php');
 include_once("./bussiness_layer/worker_ticket_print.php"); //*worker_request_print
 include_once("./bussiness_layer/state_change.php");
 
-session_start();
+if(session_id() == "")
+    session_start();
 if(! is_worker() )
     header('Location: ../index.php');
 

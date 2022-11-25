@@ -60,11 +60,11 @@ INSERT INTO CATEGORY (description) VALUES ("Iné");
 
 
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Anonymny","Uzivatel","user@user.com","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
-INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Jozko","Obycajny","user@fit.com","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
+INSERT INTO PERSON (first_name,last_name,email,phone,PW_HASH,role) VALUES ("Jozko","Obycajny","user@fit.com","0942 420 567","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Danko","Bezny","user2@fit.com","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Zdena","Neaktivna","user3@fit.com","04f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb",0);
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Admin","","admin@fit.com","8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",1);
-INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Petra","Veduca","manager@fit.com","6ee4a469cd4e91053847f5d3fcb61dbcc91e8f0ef10be7748da4c4a1ba382d17",2);
+INSERT INTO PERSON (first_name,last_name,email,phone,PW_HASH,role) VALUES ("Petra","Veduca","manager@fit.com","+421 923 254 892","6ee4a469cd4e91053847f5d3fcb61dbcc91e8f0ef10be7748da4c4a1ba382d17",2);
 INSERT INTO PERSON (first_name,last_name,email,PW_HASH,role) VALUES ("Stefan","Pracujuci","worker@fit.com","87eba76e7f3164534045ba922e7770fb58bbd14ad732bbf5ba6f11cc56989e6e",3);
 
 INSERT INTO TICKET (category,submitted_by,photo,lng,lat,state_from_manager,time_created,time_modified,msg_from_manager) VALUES (1,1,'../img/trash.jpeg',16.596216,49.225684,2,'2022-11-21 12:44:46','2022-11-23 19:01:43','Dakujeme za nahlásenie. Odpadky boli upratané.');
